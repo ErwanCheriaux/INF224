@@ -9,12 +9,12 @@
 #
 # Nom du programme
 #
-PROG = myprog
+PROG = INF224-Projet
 
 #
 # Fichiers sources (NE PAS METTRE les .h ni les .o seulement les .cpp)
 #
-SOURCES = MyClass.cpp main.cpp
+SOURCES = multimedia.cpp main.cpp
 
 #
 # Fichiers objets (ne pas modifier sauf si l'extension n'est pas .cpp)
