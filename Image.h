@@ -12,8 +12,9 @@ class Image : public Multimedia
         double longitude;
 
     public:
-        Image(){latitude=0; longitude=0;}
-        Image(double _latitude, double _longitude){latitude = _latitude; longitude = _longitude;}
+        Image(): latitude(0), longitude(0) {}
+        Image(string _name, string _pathname, double _latitude, double _longitude):
+            Multimedia(_name, _pathname), latitude(_latitude), longitude(_longitude) {}
 
         virtual double getLatitude() const {return latitude;}
         virtual double getLongitude() const {return longitude;}
@@ -22,5 +23,5 @@ class Image : public Multimedia
         virtual void setLongitude(double _longitude){longitude = _longitude;}
 
         virtual void display(ostream& s) const override
-        {s << "latitude:" << latitude << "\n" << "longitude:" << longitude << endl;}
+        {Multimedia::display(s); s << "latitude:" << latitude << "\n" << "longitude:" << longitude << endl;}
 };

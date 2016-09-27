@@ -21,3 +21,6 @@ Ajout de la classe Main testant la classe Multimedia
 Etape terminée
 
 Etape 4:
+Ajout des classes Image et Video uniquement en .h
+Utilisation de l'héritage afin de ne pas réecrire certaine partie du code déjà présent dans la classe Multimedia
+

@@ -12,13 +12,14 @@ class Video : public Multimedia
         int time;   // durée de la vidéo
 
     public:
-        Video(){time=0;}
-        Video(int _time){time = _time;}
+        Video() : time(0) {}
+        Video(string _name, string _pathname, int _time):
+            Multimedia(_name, _pathname), time(_time) {}
 
         virtual int getTime() const {return time;}
 
         virtual void setTime(int _time){time = _time;}
 
         virtual void display(ostream& s) const override
-        {s << "time:" << time << endl;}
+        {Multimedia::display(s); s << "time:" << time << endl;}
 };
