@@ -1,4 +1,4 @@
-#include "multimedia.h"
+#include "Multimedia.h"
 
 Multimedia::Multimedia()
 {
