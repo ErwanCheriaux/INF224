@@ -24,3 +24,13 @@ Etape 4:
 Ajout des classes Image et Video uniquement en .h
 Utilisation de l'héritage afin de ne pas réecrire certaine partie du code déjà présent dans la classe Multimedia
 Ajout de la méthode play() aux classes Image et Video
+
+Q:Comment appelle-t'on ce type de méthode et comment faut-il les déclarer ? 
+R:On appelle cela une méthode abstraite et cela ce déclare ainsi -> virtual void play()=0;
+
+Q:Si vous avez fait correctement ce qui précède, il ne sera plus possible d'instancer des objets de la classe de base. Pourquoi ?
+R:La méthode de base contient à présent une méthode abstraite qui rend sont instanciation inchoérente.
+
+Etape terminée
+
+Etape 5:

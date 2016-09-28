@@ -24,6 +24,7 @@ class Multimedia
         virtual void setName(string _name){name = _name;}
         virtual void setPathname(string _pathname){pathname = _pathname;}
 
+        virtual void play()=0;
         virtual void display(ostream& s) const;
 };
 
