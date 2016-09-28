@@ -20,6 +20,12 @@ class Video : public Multimedia
 
         virtual void setTime(int _time){time = _time;}
 
+        virtual void play()
+        {
+            string str = "mpv "+ getPathname() + getName() +" &";
+            system(str.c_str());
+        }
+
         virtual void display(ostream& s) const override
         {Multimedia::display(s); s << "time:" << time << endl;}
 };

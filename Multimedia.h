@@ -2,6 +2,7 @@
 #define MULTIMEDIA_H
 
 #include <string>
+#include <cstring>
 #include <iostream>
 using namespace std;
 

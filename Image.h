@@ -1,9 +1,10 @@
 #ifndef IMAGE_H
 #define IMAGE_H
 
-//#include "multimedia.h"
+
 
 #endif // IMAGE_H
+
 
 class Image : public Multimedia
 {
@@ -21,6 +22,12 @@ class Image : public Multimedia
 
         virtual void setLatitude(double _latitude){latitude = _latitude;}
         virtual void setLongitude(double _longitude){longitude = _longitude;}
+
+        virtual void play()
+        {
+            string str = "imagej "+ getPathname() + getName() +" &";
+            system(str.c_str());
+        }
 
         virtual void display(ostream& s) const override
         {Multimedia::display(s); s << "latitude:" << latitude << "\n" << "longitude:" << longitude << endl;}

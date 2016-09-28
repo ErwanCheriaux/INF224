@@ -23,4 +23,4 @@ Etape terminée
 Etape 4:
 Ajout des classes Image et Video uniquement en .h
 Utilisation de l'héritage afin de ne pas réecrire certaine partie du code déjà présent dans la classe Multimedia
-
+Ajout de la méthode play() aux classes Image et Video
