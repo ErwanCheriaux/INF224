@@ -35,3 +35,6 @@ Etape 5:
 Q:Quelle est la propriété caractéristique de l'orienté objet qui permet de faire cela ? Qu'est-il spécifiquement nécessaire de faire dans le cas du C++ ? Quel est le type des éléments du tableau : est-ce que ce tableau contient les objets ou des pointeurs vers ces objets ? Pourquoi ? Comparer à Java.
 R:On appelle cela le polymorphisme le fait qu'un objet possède plusieurs classes (la sienne et celle dont il hérite). Le tableau contient des pointeurs vers ces objets car l'instanciation du tableau se fait avec une *. Contrairement à Java, il faut mettre une * pour signaler qu'il sagit d'un pointeur.
 Étape terminée
+
+Etape 6:
+De nombreuse erreur du aux pointeurs et aux tableaux de la nouvelle classe Film
