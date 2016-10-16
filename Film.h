@@ -1,6 +1,11 @@
 #ifndef FILM_H
 #define FILM_H
 
+#include <string>
+#include <cstring>
+#include <iostream>
+using namespace std;
+
 #endif // FILM_H
 
 
@@ -15,7 +20,7 @@ class Film : public Video
         Film(string _name, string _pathname, int _time, const int *_chapter, int _nbChapter);
 
 
-        virtual const int * getChapter() const {return chapter;}
+        virtual void getChapter(const int *tab, int &index) const {tab = chapter; index = nbChapter;}
         virtual int getNbChapter() const {return nbChapter;}
 
         virtual void setChapter(const int * _chapter, int _nbChapter)
@@ -26,4 +31,4 @@ class Film : public Video
         }
 
         virtual void displayChapter(ostream& s) const;
-}
+};

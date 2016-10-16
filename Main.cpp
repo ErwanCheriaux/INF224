@@ -15,8 +15,8 @@ int main()
     Film * film1= new Film();
     Film * film2= new Film("famille", "dossierPerso/film/", 10, tab, i);
 
-    film1->display();
-    film1->displayChapter();
-    film2->display();
-    film2->displayChapter();
+    film1->display(cout);
+    film1->displayChapter(cout);
+    film2->display(cout);
+    film2->displayChapter(cout);
 }
