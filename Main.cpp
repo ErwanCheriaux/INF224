@@ -4,7 +4,7 @@
 #include "Film.h"
 
 /*!
- * \brief main: Test le reste du programme !
+ * \brief Test le reste du programme !
  * \return
  */
 int main()

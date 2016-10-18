@@ -2,32 +2,32 @@
 
 
 /*!
- * \brief Multimedia::Multimedia Classe de base de tout type de multimédia (vidéo, image, ...)
+ * \brief Constructeur par défaut
  */
 Multimedia::Multimedia()
 {
-    name = "";
-    pathname = "";
+    _name = "";
+    _pathname = "";
 }
 
 
 /*!
- * \brief Multimedia::Multimedia Classe de base de tout type de multimédia (vidéo, image, ...)
+ * \brief Classe de base de tout type de multimédia (vidéo, image, ...)
  * \param _name Nom du produit multimédia
  * \param _pathname Chemin relatif du produit multimédia
  */
-Multimedia::Multimedia(string _name, string _pathname)
+Multimedia::Multimedia(string name, string pathname)
 {
-    name = _name;
-    pathname = _pathname;
+    _name = name;
+    _pathname = pathname;
 }
 
 
 /*!
- * \brief Multimedia::display Affiche dans la console les informations sur le produit multimédia
- * \param s cout
+ * \brief Affiche dans la console les informations sur le produit multimédia
+ * \param s choix de la sortie pour l'affichage (cout -> terminal)
  */
 void Multimedia::display(ostream& s) const
 {
-    s << "name:" << name << "\n" << "pathname:" << pathname << endl;
+    s << "name:" << getName() << "\n" << "pathname:" << getPathname() << endl;
 }

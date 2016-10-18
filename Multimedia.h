@@ -8,29 +8,29 @@ using namespace std;
 
 
 /*!
- * \brief The Multimedia class Classe de base de tout type de multimédia (vidéo, image, ...)
+ * \brief La classe Multimedia est la classe de base de tout type de multimédia (vidéo, image, ...)
  */
 class Multimedia
 {
     private:
-        string name;
-        string pathname;
+        string _name;
+        string _pathname;
 
     public:
         //constructeur
         Multimedia();
-        Multimedia(string _name, string _pathname);
+        Multimedia(string name, string pathname);
 
         //destructeur
         //virtual ~Multimedia();
 
         //getter
-        virtual string getName() const {return name;}
-        virtual string getPathname() const {return pathname;}
+        virtual string getName() const {return _name;}
+        virtual string getPathname() const {return _pathname;}
 
         //setter
-        virtual void setName(string _name){name = _name;}
-        virtual void setPathname(string _pathname){pathname = _pathname;}
+        virtual void setName(string name){_name = name;}
+        virtual void setPathname(string pathname){_pathname = pathname;}
 
         //methode abstraite
         virtual void play()=0;
