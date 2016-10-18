@@ -37,4 +37,14 @@ R:On appelle cela le polymorphisme le fait qu'un objet possède plusieurs classe
 Étape terminée
 
 Etape 6:
-De nombreuse erreur du aux pointeurs et aux tableaux de la nouvelle classe Film
+ajout de la classe Film. Faire attention à la variable pointeur dans cette nouvelle classe.
+Notamment dans les getter et setter !
+
+Q: Que faut-il faire pour que l'objet Film ait plein contrôle sur ses données et en particulier son tableau de durées des chapitres (qui lui est propre et ne doit dépendre que de lui) ?
+R: Il faut faire une copie de chaque élément du pointeur (tableau) et ne surtout pas copier l'addresse du pointeur.
+
+Les getter et setter ont été testé et validé oppérationnel.
+Etape terminée
+
+Etape 7:
+

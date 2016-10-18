@@ -19,8 +19,8 @@ class Film : public Video
         Film(string _name, string _pathname, int _time, const int *_chapter, int _nbChapter);
 
 
-        virtual void getChapter(const int *tab, int &index) const {tab = chapter; index = nbChapter;}
         virtual int getNbChapter() const {return nbChapter;}
+        virtual int * getChapter(int &index) const;
 
         virtual void setChapter(const int * _chapter, int _nbChapter);
 

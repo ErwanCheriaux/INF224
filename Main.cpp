@@ -5,7 +5,7 @@
 
 int main()
 {
-    const int i = 4;
+    int i = 4;
     int * tab = new int[i];
     for(int j = 0; j<i; j++)
     {
