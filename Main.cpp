@@ -24,4 +24,7 @@ int main()
     Film * film2= new Film("famille", "dossierPerso/film/", 10, tab, i);
     film2->display(cout);
     film2->displayChapter(cout);
+
+    delete film1;
+    delete film2;
 }

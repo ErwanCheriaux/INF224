@@ -20,6 +20,9 @@ class Image : public Multimedia
         Image(string name, string pathname, double latitude, double longitude):
             Multimedia(name, pathname), _latitude(latitude), _longitude(longitude) {}
 
+        //destructeur
+        virtual ~Image() {cout << "---Destruction de " + getName() + "---\n" << endl;}
+
         //getter
         virtual double getLatitude() const {return _latitude;}
         virtual double getLongitude() const {return _longitude;}

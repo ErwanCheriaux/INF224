@@ -12,6 +12,7 @@ https://github.com/KataKoeur/INF224.git
 
 Étape 2:
 utilisation de QtCreator pour programmer en C++
+utilisation de Doxygen pour la generation de document
 Ajout de la classe Multimédia avec quelques fonctionnalités de base
 Étape terminée
 

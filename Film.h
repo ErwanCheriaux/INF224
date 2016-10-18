@@ -23,6 +23,9 @@ class Film : public Video
         Film(): _chapter(nullptr), _nbChapter(0) {}
         Film(string name, string pathname, int time, const int *chapter, int nbChapter);
 
+        //destructeur
+        virtual ~Film() {delete _chapter; cout << "---Destruction de " + getName() + "---\n" << endl;}
+
         //getter
         virtual int getNbChapter() const {return _nbChapter;}
         virtual int * getChapter(int &nbChapter) const;
