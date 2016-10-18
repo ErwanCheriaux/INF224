@@ -3,6 +3,10 @@
 
 #include "Multimedia.h"
 
+/*!
+ * \brief The Video class Herite de multimédia
+ *        Permet de contenire tout type de vidéo
+ */
 class Video : public Multimedia
 {
     private:

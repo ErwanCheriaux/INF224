@@ -3,6 +3,10 @@
 #include "Video.h"
 #include "Film.h"
 
+/*!
+ * \brief main: Test le reste du programme !
+ * \return
+ */
 int main()
 {
     int i = 4;
