@@ -1,10 +1,7 @@
 #ifndef IMAGE_H
 #define IMAGE_H
 
-
-
-#endif // IMAGE_H
-
+#include "Multimedia.h"
 
 class Image : public Multimedia
 {
@@ -32,3 +29,5 @@ class Image : public Multimedia
         virtual void display(ostream& s) const override
         {Multimedia::display(s); s << "latitude:" << latitude << "\n" << "longitude:" << longitude << endl;}
 };
+
+#endif // IMAGE_H

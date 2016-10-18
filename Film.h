@@ -1,13 +1,12 @@
 #ifndef FILM_H
 #define FILM_H
 
+#include "Video.h"
+
 #include <string>
 #include <cstring>
 #include <iostream>
 using namespace std;
-
-#endif // FILM_H
-
 
 class Film : public Video
 {
@@ -23,12 +22,9 @@ class Film : public Video
         virtual void getChapter(const int *tab, int &index) const {tab = chapter; index = nbChapter;}
         virtual int getNbChapter() const {return nbChapter;}
 
-        virtual void setChapter(const int * _chapter, int _nbChapter)
-        {
-            nbChapter = _nbChapter;
-            for(int i=0; i< nbChapter; i++)
-                chapter[i] = _chapter[i];
-        }
+        virtual void setChapter(const int * _chapter, int _nbChapter);
 
         virtual void displayChapter(ostream& s) const;
 };
+
+#endif // FILM_H

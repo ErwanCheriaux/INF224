@@ -1,10 +1,7 @@
 #ifndef VIDEO_H
 #define VIDEO_H
 
-//#include "multimedia.h"
-
-#endif // VIDEO_H
-
+#include "Multimedia.h"
 
 class Video : public Multimedia
 {
@@ -29,3 +26,5 @@ class Video : public Multimedia
         virtual void display(ostream& s) const override
         {Multimedia::display(s); s << "time:" << time << endl;}
 };
+
+#endif // VIDEO_H
