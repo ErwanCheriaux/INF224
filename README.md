@@ -34,7 +34,7 @@ R: La méthode de base contient à présent une méthode abstraite qui rend son 
 
 Etape 5:
 Q:Quelle est la propriété caractéristique de l'orienté objet qui permet de faire cela ? Qu'est-il spécifiquement nécessaire de faire dans le cas du C++ ? Quel est le type des éléments du tableau : est-ce que ce tableau contient les objets ou des pointeurs vers ces objets ? Pourquoi ? Comparer à Java.
-R:On appelle cela le polymorphisme le fait qu'un objet possède plusieurs classes (la sienne et celle dont il hérite). Le tableau contient des pointeurs vers ces objets car l'instanciation du tableau se fait avec une *. Contrairement à Java, il faut mettre une * pour signaler qu'il sagit d'un pointeur.
+R:On appelle cela le polymorphisme le fait qu'un objet possède plusieurs classes (la sienne et celle dont il hérite). Le tableau contient des pointeurs vers ces objets car l'instanciation du tableau se fait avec une "etoile". Contrairement à Java, il faut mettre une * pour signaler qu'il sagit d'un pointeur.
 Étape terminée
 
 Etape 6:
@@ -48,4 +48,9 @@ Les getter et setter ont été testé et validé oppérationnel.
 Etape terminée
 
 Etape 7:
+Q: Parmi les classes précédemment écrites quelles sont celles qu'il faut modifier et comment afin qu'il n'y ait pas de fuite mémoire quand on détruit leurs instances ? 
+R: Il faut penser à détruire les variables pointeuses lors de la destruction des classes qui en possède.
+
+Q: Quelle(s) classe(s) sont concernées parmi celles déjà écrites et que faut-il faire ?
+R: La classe Film est conserné car la variable chapter est un pointeur.
 

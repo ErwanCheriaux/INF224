@@ -16,6 +16,32 @@ Film::Film(string name, string pathname, int time, const int *chapter, int nbCha
 
 
 /*!
+ * \brief Instancie un nouvel objet avec les valeurs de f
+ * \param f Objet que l'on souhaite copier
+ */
+Film::Film(const Film& f): Video(f.getName(), f.getPathname(), f.getTime())
+    {_chapter = f.getChapter(_nbChapter);} //Recuperation des valeurs du pointeur de f
+
+
+/*!
+ * \brief L'opération = devient une copie intélligente
+ * \param f Objet que l'on souhaite copier
+ * \return
+ */
+Film& Film::operator=(const Film& f)
+{
+    this->setName(f.getName());
+    this->setPathname(f.getPathname());
+    this->setTime(f.getTime());
+
+    delete this->_chapter;
+    this->_chapter = f.getChapter(this->_nbChapter);
+
+    return *this;
+}
+
+
+/*!
  * \brief Renvoie une copie du tableau chapter avec son nombre d'élément nbChapter
  * \param nbChapter Nombre d'élément dans le tableau qui sera retourné
  * \return chapter Tableau contenant le temps de début de chaque chapitre

@@ -26,6 +26,10 @@ class Film : public Video
         //destructeur
         virtual ~Film() {delete _chapter; cout << "---Destruction de " + getName() + "---\n" << endl;}
 
+        //copie
+        Film(const Film& f);
+        Film& operator=(const Film& f);
+
         //getter
         virtual int getNbChapter() const {return _nbChapter;}
         virtual int * getChapter(int &nbChapter) const;

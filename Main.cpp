@@ -4,9 +4,16 @@
 #include "Film.h"
 
 /*!
- * \brief Test le reste du programme !
- * \return
+ * \file main.c
+ * \brief Programme de tests.
+ * \author Erwan CHERIAUX
+ * \version 0.1
+ * \date 18 octobre 2016
+ *
+ * Programme de test du logiciel d'une set-top box multimédia
+ *
  */
+
 int main()
 {
     int i = 4;
@@ -25,6 +32,17 @@ int main()
     film2->display(cout);
     film2->displayChapter(cout);
 
+
+    Film * film3= new Film(*film1);
+    film3->display(cout);
+    film3->displayChapter(cout);
+
+    film1= film2;
+    film1->display(cout);
+    film1->displayChapter(cout);
+
+
     delete film1;
     delete film2;
+    delete film3;
 }
