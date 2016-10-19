@@ -27,22 +27,18 @@ int main()
     film1->display(cout);
     film1->displayChapter(cout);
 
-
     Film * film2= new Film("famille", "dossierPerso/film/", 10, tab, i);
     film2->display(cout);
     film2->displayChapter(cout);
 
-
-    Film * film3= new Film(*film1);
-    film3->display(cout);
-    film3->displayChapter(cout);
-
-    film1= film2;
+    *film1 = *film2;
     film1->display(cout);
     film1->displayChapter(cout);
 
+    film2->setName("LOLLOLOLOLOLOLO");
+    film1->display(cout);
+    film1->displayChapter(cout);
 
     delete film1;
     delete film2;
-    delete film3;
 }

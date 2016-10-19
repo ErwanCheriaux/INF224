@@ -53,4 +53,6 @@ R: Il faut penser à détruire les variables pointeuses lors de la destruction d
 
 Q: Quelle(s) classe(s) sont concernées parmi celles déjà écrites et que faut-il faire ?
 R: La classe Film est conserné car la variable chapter est un pointeur.
+Etape terminée
 
+Etape 8:
