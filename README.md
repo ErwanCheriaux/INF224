@@ -56,3 +56,10 @@ R: La classe Film est conserné car la variable chapter est un pointeur.
 Etape terminée
 
 Etape 8:
+ajout de la classe Group qui permet de faire une liste d'objet multimédia. Cette classe hérite directement de list.
+
+Q:La classe groupe doit-elle forcément avoir un destructeur ou ça dépend des cas ? Expliquez. 
+R:
+
+Q:On rappelle que la liste d'objets doit en fait être une liste de pointeurs d'objets. Pourquoi ? Comparer à Java.
+R:Utiliser des pointeurs permet de partager des objets entre plusieur groupe. Ainsi si l'objet est modifié, il sera modifier pour tous les groupes. Ce qui est logique puisqu'il sagit du même objet. En Java, la solution avec les pointeurs est la seul possible puisque Java travail uniquement avec des pointeurs qui sont caché au yeux du programmeur.
