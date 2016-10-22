@@ -66,4 +66,8 @@ R:Utiliser des pointeurs permet de partager des objets entre plusieur groupes. A
 Etape terminée
 
 Etape 9:
-Création d'un Smart pointer dans la classe Multimedia qui est utilisé dans la classe Group.
+Création d'un Smart pointer dans la classe Multimedia qui est utilisé dans la classe Group. Il faut maintenant penser lors de la création d'objet multimédia à utiliser un smart pointer.
+Lors de la suppression de tous les groupes contenant un même objet, on peut voir dans le terminal que l'objet en question se supprime.
+Etape terminée
+
+Etape 10:

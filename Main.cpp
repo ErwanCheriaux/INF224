@@ -21,12 +21,12 @@ int main()
     Group *gVideo = new Group("Mes Videos");
     Group *gDocument = new Group("Mes Documents");
 
-    Video * f1 = new Video("famille1", "dossierPerso/film/", 10);
-    Video * f2 = new Video("famille2", "dossierPerso/film/", 15);
-    Video * f3 = new Video("famille best of", "dossierPerso/film/", 5);
+    MultimediaPtr f1(new Video("video1", "dossierPerso/film/", 10));
+    MultimediaPtr f2(new Video("video2", "dossierPerso/film/", 15));
+    MultimediaPtr f3(new Video("video best of", "dossierPerso/film/", 5));
 
-    Image * i1 = new Image("famille1", "dossierPerso/photo/", 640, 480);
-    Image * i2 = new Image("famille2", "dossierPerso/photo/", 640, 480);
+    MultimediaPtr i1(new Image("image1", "dossierPerso/photo/", 640, 480));
+    MultimediaPtr i2(new Image("image2", "dossierPerso/photo/", 640, 480));
 
     gVideo->push_back(f1);
     gVideo->push_back(f2);
@@ -57,4 +57,9 @@ int main()
 
     cout << "-----Groupe Document apres la suppression du groupe image-----\n" <<endl;
     gDocument->display(cout);
+
+    delete gDocument;
+
+    cout << "-----Groupe Video apres la suppression du groupe document-----\n" <<endl;
+    gVideo->display(cout);
 }
