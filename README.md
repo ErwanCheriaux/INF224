@@ -63,3 +63,7 @@ R:La classe groupe doit avoir un destructeur dans la mesure où elle instancie u
 
 Q:On rappelle que la liste d'objets doit en fait être une liste de pointeurs d'objets. Pourquoi ? Comparer à Java.
 R:Utiliser des pointeurs permet de partager des objets entre plusieur groupes. Ainsi si l'objet est modifié, il sera modifié pour tous les groupes. Ce qui est logique puisqu'il sagit du même objet. En Java, la solution avec les pointeurs est la seul possible puisque Java travail uniquement avec des pointeurs qui sont caché au yeux du programmeur.
+Etape terminée
+
+Etape 9:
+Création d'un Smart pointer dans la classe Multimedia qui est utilisé dans la classe Group.

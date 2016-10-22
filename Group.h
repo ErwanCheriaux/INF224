@@ -12,7 +12,7 @@ using namespace std;
 /*!
  * \brief La classe Group est une liste contenant des produits multimédias (vidéo, image, ...)
  */
-class Group : public list<Multimedia*>
+class Group : public list<MultimediaPtr>
 {
     private:
         string _name;
