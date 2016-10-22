@@ -21,12 +21,12 @@ int main()
     Group *gVideo = new Group("Mes Videos");
     Group *gDocument = new Group("Mes Documents");
 
-    MultimediaPtr f1(new Video("video1", "dossierPerso/film/", 10));
-    MultimediaPtr f2(new Video("video2", "dossierPerso/film/", 15));
-    MultimediaPtr f3(new Video("video best of", "dossierPerso/film/", 5));
+    MultimediaPtr f1(new Video("video1", "dossierPerso/film/video1.avi", 10));
+    MultimediaPtr f2(new Video("video2", "dossierPerso/film/video2.avi", 15));
+    MultimediaPtr f3(new Video("video best of", "dossierPerso/film/video_best_of.avi", 5));
 
-    MultimediaPtr i1(new Image("image1", "dossierPerso/photo/", 640, 480));
-    MultimediaPtr i2(new Image("image2", "dossierPerso/photo/", 640, 480));
+    MultimediaPtr i1(new Image("image1", "dossierPerso/photo/image1.jpg", 640, 480));
+    MultimediaPtr i2(new Image("image2", "dossierPerso/photo/image2.jpg", 640, 480));
 
     gVideo->push_back(f1);
     gVideo->push_back(f2);

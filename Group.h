@@ -23,7 +23,7 @@ class Group : public list<MultimediaPtr>
         Group(string name);
 
         //destructeur
-        virtual ~Group() {cout << "---Destruction de " + getName() + "---\n" << endl;}
+        virtual ~Group() {cout << "---> Destruction de " + getName() + "\n" << endl;}
 
         //getter
         virtual string getName() const {return _name;}

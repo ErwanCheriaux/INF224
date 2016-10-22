@@ -21,7 +21,7 @@ class Image : public Multimedia
             Multimedia(name, pathname), _latitude(latitude), _longitude(longitude) {}
 
         //destructeur
-        virtual ~Image() {cout << "---Destruction de " + getName() + "---\n" << endl;}
+        virtual ~Image() {cout << "---> Destruction de " + getName() + "\n" << endl;}
 
         //getter
         virtual double getLatitude() const {return _latitude;}
@@ -38,12 +38,12 @@ class Image : public Multimedia
          */
         virtual void play()
         {
-            string str = "imagej "+ getPathname() + getName() +" &";
+            string str = "imagej "+ getPathname() +" &";
             system(str.c_str());
         }
 
         virtual void display(ostream& s) const override
-        {Multimedia::display(s); s << "latitude:" << getLatitude() << "\n" << "longitude:" << getLongitude() << endl;}
+        {Multimedia::display(s); s << "latitude:" << getLatitude() << "\n" << "longitude:" << getLongitude() << "\n" << endl;}
 };
 
 #endif // IMAGE_H

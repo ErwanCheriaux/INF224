@@ -25,7 +25,7 @@ class Multimedia
         Multimedia(string name, string pathname);
 
         //destructeur
-        virtual ~Multimedia() {cout << "---Destruction de " + getName() + "---\n" << endl;}
+        virtual ~Multimedia() {cout << "---> Destruction de " + getName() + "\n" << endl;}
 
         //getter
         virtual string getName() const {return _name;}

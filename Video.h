@@ -19,7 +19,7 @@ class Video : public Multimedia
             Multimedia(name, pathname), _time(time) {}
 
         //destructeur
-        virtual ~Video() {cout << "---Destruction de " + getName() + "---\n" << endl;}
+        virtual ~Video() {cout << "---> Destruction de " + getName() + "\n" << endl;}
 
         //getter
         virtual int getTime() const {return _time;}
@@ -34,12 +34,12 @@ class Video : public Multimedia
          */
         virtual void play()
         {
-            string str = "mpv "+ getPathname() + getName() +" &";
+            string str = "mpv "+ getPathname()+" &";
             system(str.c_str());
         }
 
         virtual void display(ostream& s) const override
-        {Multimedia::display(s); s << "time:" << getTime() << endl;}
+        {Multimedia::display(s); s << "time:" << getTime() << "\n" << endl;}
 };
 
 #endif // VIDEO_H
