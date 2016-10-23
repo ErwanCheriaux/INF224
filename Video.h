@@ -13,12 +13,13 @@ class Video : public Multimedia
     private:
         int _time;   // durée de la vidéo
 
-    public:
+    protected:
         //constructeur
         Video() : _time(0) {}
         Video(string name, string pathname, int time):
             Multimedia(name, pathname), _time(time) {}
 
+    public:
         //destructeur
         virtual ~Video() {}
 

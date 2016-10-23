@@ -15,12 +15,13 @@ class Image : public Multimedia
         double _latitude;
         double _longitude;
 
-    public:
+    protected:
         //construteur
         Image(): _latitude(0), _longitude(0) {}
         Image(string name, string pathname, double latitude, double longitude):
             Multimedia(name, pathname), _latitude(latitude), _longitude(longitude) {}
 
+    public:
         //destructeur
         virtual ~Image() {}
 

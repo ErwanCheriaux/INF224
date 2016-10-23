@@ -12,15 +12,18 @@ using namespace std;
  */
 class Multimedia
 {
+    friend class Bdd;
+
     private:
         string _name;
         string _pathname;
 
-    public:
+    protected:
         //constructeur
         Multimedia();
         Multimedia(string name, string pathname);
 
+    public:
         //destructeur
         virtual ~Multimedia() {cout << "---> Destruction de " + getName() << endl;}
 

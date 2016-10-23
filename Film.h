@@ -14,11 +14,12 @@ class Film : public Video
         int * _chapter;
         int _nbChapter;
 
-    public:
+    protected:
         //constructeur
         Film(): _chapter(nullptr), _nbChapter(0) {}
         Film(string name, string pathname, int time, const int *chapter, int nbChapter);
 
+    public:
         //destructeur
         virtual ~Film() {delete _chapter;}
 

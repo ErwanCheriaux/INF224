@@ -176,6 +176,7 @@ void Bdd::remove(const string name)
         MultimediaPtr mp;
         Group * g;
 
+        //Suppréssion de l'objet dans tous les groupes (qu'il existe ou non)
         for (GroupMap::iterator it = groupMap.begin(); it != groupMap.end(); it++ )
         {
             g = it->second.get();

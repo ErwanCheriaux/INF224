@@ -72,7 +72,10 @@ Etape terminée
 
 Etape 10:
 ajout d'une classe Bdd qui est une base de données gérant la cohérence des données. Elle contient la totalité des produits multimédias et des groupes.
-ajout d'une vérification contre les doublons avant l'ajout d'un nouvelle objet ou groupe.
+ajout d'une vérification contre les doublons avant l'ajout d'un nouvel objet ou groupe.
 
 Q:On peut créer directement les objets avec new sans passer par les méthodes précédentes. Comment peut-on l'interdire, afin que seule la classe servant à manipuler les objets puisse en créer de nouveaux ? 
-R:
+R:Il faut mettre tous les constructeurs de la classe Multimedia en protected. Il faut faire de même avec toutes ses classes filles. Enfin, il ajouter l'aurorisation à la classe Bdd d'accèder au constructeur avec le mot friend. Aussi, il est impossible d'instancier un objet multimédia depuis le main.
+Etape terminée
+
+Etape11:
