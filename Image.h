@@ -22,7 +22,7 @@ class Image : public Multimedia
             Multimedia(name, pathname), _latitude(latitude), _longitude(longitude) {}
 
         //destructeur
-        virtual ~Image() {cout << "---> Destruction de " + getName() + "\n" << endl;}
+        virtual ~Image() {}
 
         //getter
         virtual double getLatitude() const {return _latitude;}

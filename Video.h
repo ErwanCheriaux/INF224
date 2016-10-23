@@ -20,7 +20,7 @@ class Video : public Multimedia
             Multimedia(name, pathname), _time(time) {}
 
         //destructeur
-        virtual ~Video() {cout << "---> Destruction de " + getName() + "\n" << endl;}
+        virtual ~Video() {}
 
         //getter
         virtual int getTime() const {return _time;}

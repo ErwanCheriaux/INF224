@@ -128,7 +128,7 @@ void Bdd::addMultimediaToGroup(const string multimediaName, const string groupNa
     multimediaIt = multimediaMap.find(multimediaName);
     groupIt = groupMap.find(groupName);
 
-    //Vérification que l'objet et/ou le groupe existe bien dans la Bdd
+    //Vérification que l'objet et le groupe existe bien dans la Bdd
     if(multimediaIt == multimediaMap.end())
     {
         cerr << "---> Erreur : "+ multimediaName +" n'existe pas dans la Bdd" << endl;
@@ -172,6 +172,16 @@ void Bdd::remove(const string name)
     else if(multimediaIt != multimediaMap.end())
     {
         cout << "--- Suppression de l'objet "+ name +" de la Bdd" << endl;
+
+        MultimediaPtr mp;
+        Group * g;
+
+        for (GroupMap::iterator it = groupMap.begin(); it != groupMap.end(); it++ )
+        {
+            g = it->second.get();
+            mp = multimediaMap[name];
+            g->remove(mp);
+        }
         multimediaMap.erase(name);
     }
     else if(groupIt != groupMap.end())

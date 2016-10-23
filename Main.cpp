@@ -18,6 +18,7 @@ int main()
     MultimediaPtr vid;
 
     vGroup = bdd->add("Mes Videos");
+    vGroup = bdd->add("Mes Documents");
 
     vid = bdd->add("video1", "dossierPerso/film/video1.avi", 10);
     vid = bdd->add("video2", "dossierPerso/film/video2.avi", 15);
@@ -27,14 +28,19 @@ int main()
     bdd->addMultimediaToGroup("video1", "Mes Videos");
     bdd->addMultimediaToGroup("video2", "Mes Videos");
     bdd->addMultimediaToGroup("video best of", "Mes Videos");
-    bdd->addMultimediaToGroup("video best of", "Mes Videos");
-    bdd->addMultimediaToGroup("video best of 2eme partie", "Mes Videos");
+
+    bdd->addMultimediaToGroup("video1", "Mes Documents");
+    bdd->addMultimediaToGroup("video2", "Mes Documents");
+    bdd->addMultimediaToGroup("video best of", "Mes Documents");
+    bdd->addMultimediaToGroup("Logo ENST", "Mes Documents");
 
     bdd->find("Mes Videos");
-    /*
+    bdd->find("Mes Documents");
+
     bdd->remove("video2");
+
     bdd->find("Mes Videos");
-    */
+    bdd->find("Mes Documents");
 }
 
 /*

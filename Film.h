@@ -20,7 +20,7 @@ class Film : public Video
         Film(string name, string pathname, int time, const int *chapter, int nbChapter);
 
         //destructeur
-        virtual ~Film() {delete _chapter; cout << "---> Destruction de " + getName() + "\n" << endl;}
+        virtual ~Film() {delete _chapter;}
 
         //copie
         Film(const Film& f);
