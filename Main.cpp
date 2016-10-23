@@ -19,6 +19,14 @@
 int main()
 {
     Bdd * bdd = new Bdd();
+
+    GroupPtr vGroup = bdd->add(GroupPtr(new Group("Mes Videos")));
+
+
+    bdd->add(MultimediaPtr(new Video("video1", "dossierPerso/film/video1.avi", 10)));
+    bdd->add(MultimediaPtr(new Video("video2", "dossierPerso/film/video2.avi", 15)));
+    bdd->add(MultimediaPtr(new Video("video best of", "dossierPerso/film/video_best_of.avi", 5)));
+
 }
 
 /*

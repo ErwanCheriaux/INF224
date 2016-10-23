@@ -6,30 +6,9 @@
  * \param media Image que l'on souhaite ajouter
  * \return
  */
-Image Bdd::add(Image media)
+MultimediaPtr Bdd::add(MultimediaPtr media)
 {
-    return media;
-}
-
-
-/*!
- * \brief Permet d'ajouter une vidéo à la Base de données
- * \param media Vidéo que l'on souhaite ajouter
- * \return
- */
-Video Bdd::add(Video media)
-{
-    return media;
-}
-
-
-/*!
- * \brief Permet d'ajouter un film à la Base de données
- * \param media Film que l'on souhaite ajouter
- * \return
- */
-Film Bdd::add(Film media)
-{
+    cout << "--- Ajout de l'objet "+ media.get()->getName() +" à la Bdd" << endl;
     return media;
 }
 
@@ -39,8 +18,9 @@ Film Bdd::add(Film media)
  * \param group Groupe que l'on souhaite ajouter
  * \return
  */
-Group Bdd::add(Group group)
+GroupPtr Bdd::add(GroupPtr group)
 {
+    cout << "--- Ajout du groupe "+ group.get()->getName() +" à la Bdd" << endl;
     return group;
 }
 

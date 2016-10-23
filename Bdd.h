@@ -32,10 +32,8 @@ class Bdd
         virtual ~Bdd(){cout << "---> Destruction de la BDD\n" << endl;}
 
         //methode
-        virtual Image add(Image media);
-        virtual Video add(Video media);
-        virtual Film  add(Film media);
-        virtual Group add(Group group);
+        virtual MultimediaPtr add(MultimediaPtr media);
+        virtual GroupPtr      add(GroupPtr group);
 
         virtual void remove(const string name);
 
