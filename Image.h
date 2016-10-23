@@ -3,6 +3,7 @@
 
 #include "Multimedia.h"
 
+
 /*!
  * \brief La classe Image hérite de multimédia
  *        Elle contient tout type d'image

@@ -1,8 +1,3 @@
-#include "Multimedia.h"
-#include "Image.h"
-#include "Video.h"
-#include "Film.h"
-#include "Group.h"
 #include "Bdd.h"
 
 /*!

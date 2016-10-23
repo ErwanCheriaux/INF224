@@ -3,10 +3,6 @@
 
 #include "Video.h"
 
-#include <string>
-#include <cstring>
-#include <iostream>
-using namespace std;
 
 /*!
  * \brief La classe Film hérite de Vidéo et Multumédia

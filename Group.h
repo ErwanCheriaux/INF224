@@ -4,10 +4,7 @@
 #include "Multimedia.h"
 
 #include <list>
-#include <string>
-#include <cstring>
-#include <iostream>
-using namespace std;
+#include <memory>
 
 typedef shared_ptr<Multimedia> MultimediaPtr;
 
