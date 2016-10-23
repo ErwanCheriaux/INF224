@@ -8,9 +8,19 @@
  */
 MultimediaPtr Bdd::add(MultimediaPtr media)
 {
-    cout << "--- Ajout de l'objet "+ media.get()->getName() +" à la Bdd" << endl;
+    MultimediaMap::iterator it;
+    string name = media.get()->getName();
 
-    multimediaMap[media.get()->getName()] = media;
+    it = multimediaMap.find(name);
+    if (it != multimediaMap.end())
+    {
+        cout << "---> Erreur : L'objet "+ name +" existe déjà dans la Bdd" << endl;
+    }
+    else
+    {
+        cout << "--- Ajout de l'objet "+ name +" à la Bdd" << endl;
+        multimediaMap[name] = media;
+    }
     return media;
 }
 
@@ -22,9 +32,19 @@ MultimediaPtr Bdd::add(MultimediaPtr media)
  */
 GroupPtr Bdd::add(GroupPtr group)
 {
-    cout << "--- Ajout du groupe "+ group.get()->getName() +" à la Bdd" << endl;
+    GroupMap::iterator it;
+    string name = group.get()->getName();
 
-    groupMap[group.get()->getName()] = group;
+    it = groupMap.find(name);
+    if (it != groupMap.end())
+    {
+        cout << "---> Erreur : Le groupe "+ name +" existe déjà dans la Bdd" << endl;
+    }
+    else
+    {
+        cout << "--- Ajout du groupe "+ name +" à la Bdd" << endl;
+        groupMap[name] = group;
+    }
     return group;
 }
 

@@ -71,7 +71,8 @@ Lors de la suppression de tous les groupes contenant un même objet, on peut voi
 Etape terminée
 
 Etape 10:
+ajout d'une classe Bdd qui est une base de données gérant la cohérence des données. Elle contient la totalité des produits multimédias et des groupes.
+ajout d'une vérification contre les doublons avant l'ajout d'un nouvelle objet ou groupe.
 
-
-Q:Dans ce cas des shared_ptr le problème est à moitié résolu car on ne peut pas les détruire en faisant delete dessus (ca ne compilerait pas, voir précisions ci-dessous). Par contre on peut créer directement les objets avec new sans passer par les méthodes précédentes. Comment peut-on l'interdire, afin que seule la classe servant à manipuler les objets puisse en créer de nouveaux ? 
+Q:On peut créer directement les objets avec new sans passer par les méthodes précédentes. Comment peut-on l'interdire, afin que seule la classe servant à manipuler les objets puisse en créer de nouveaux ? 
 R:

@@ -14,6 +14,9 @@ using namespace std;
 typedef shared_ptr<Multimedia> MultimediaPtr;
 typedef shared_ptr<Group> GroupPtr;
 
+typedef map<const string, MultimediaPtr> MultimediaMap;
+typedef map<const string, GroupPtr> GroupMap;
+
 /*!
  * \brief La classe Bdd est une base de données gérant la cohérence des données
  *        Elle contient la totalité des produits multimédias et des groupes
@@ -21,8 +24,8 @@ typedef shared_ptr<Group> GroupPtr;
 class Bdd
 {
     private:
-        map<const string, MultimediaPtr> multimediaMap;
-        map<const string, GroupPtr>      groupMap;
+        MultimediaMap multimediaMap;
+        GroupMap groupMap;
 
     public:
         //constructeur
