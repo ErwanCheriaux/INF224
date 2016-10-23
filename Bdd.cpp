@@ -11,7 +11,7 @@ MultimediaPtr Bdd::add(MultimediaPtr media)
     MultimediaMap::iterator it;
     string name = media.get()->getName();
 
-    //Vérification que l'objet multimédia n'éxiste pas déjà dans la Bdd
+    //Vérification que l'objet multimédia n'existe pas déjà dans la Bdd
     it = multimediaMap.find(name);
     if(it != multimediaMap.end())
     {
@@ -36,7 +36,7 @@ GroupPtr Bdd::add(GroupPtr group)
     GroupMap::iterator it;
     string name = group.get()->getName();
 
-    //Vérification que le groupe n'éxiste pas déjà dans la Bdd
+    //Vérification que le groupe n'existe pas déjà dans la Bdd
     it = groupMap.find(name);
     if(it != groupMap.end())
     {
@@ -63,7 +63,7 @@ void Bdd::remove(const string name)
     multimediaIt = multimediaMap.find(name);
     groupIt = groupMap.find(name);
 
-    //Vérification que l'objet ou le groupe éxiste bien dans la Bdd
+    //Vérification que l'objet ou le groupe existe bien dans la Bdd
     if(multimediaIt == multimediaMap.end() && groupIt == groupMap.end())
     {
         cout << "---> Erreur : "+ name +" n'existe pas dans la Bdd" << endl;
@@ -80,6 +80,7 @@ void Bdd::remove(const string name)
     }
 }
 
+
 /*!
  * \brief Permet de chercher un objet multimédia ou un groupe dans la Base de données
  * \param name Objet multimédia ou groupe que l'on cherche
@@ -92,7 +93,7 @@ void Bdd::find(const string name)
     multimediaIt = multimediaMap.find(name);
     groupIt = groupMap.find(name);
 
-    //Vérification que l'objet et/ou le groupe éxiste bien dans la Bdd
+    //Vérification que l'objet et/ou le groupe existe bien dans la Bdd
     if(multimediaIt == multimediaMap.end() && groupIt == groupMap.end())
     {
         cout << "--- "+ name +" n'existe pas dans la Bdd" << endl;
@@ -113,11 +114,27 @@ void Bdd::find(const string name)
     }
 }
 
+
 /*!
  * \brief Permet de jouer un objet multimédia de la Base de données
  * \param name Objet multimédia que l'on souhaite jouer
  */
 void Bdd::play(const string name)
 {
+    MultimediaMap::iterator multimediaIt;
 
+    multimediaIt = multimediaMap.find(name);
+
+    //Vérification que l'objet existe bien dans la Bdd
+    if(multimediaIt == multimediaMap.end())
+    {
+        cout << "---> Erreur : "+ name +" n'existe pas dans la Bdd" << endl;
+    }
+    if(multimediaIt != multimediaMap.end())
+    {
+        cout << "--- Lecture de l'objet multimédia "+ name << endl;
+        MultimediaPtr mp;
+        mp = multimediaMap[name];
+        mp.get()->play();
+    }
 }

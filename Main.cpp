@@ -27,13 +27,16 @@ int main()
     vid = bdd->add(MultimediaPtr(new Video("video1", "dossierPerso/film/video1.avi", 10)));
     vid = bdd->add(MultimediaPtr(new Video("video2", "dossierPerso/film/video2.avi", 15)));
     vid = bdd->add(MultimediaPtr(new Video("video best of", "dossierPerso/film/video_best_of.avi", 5)));
+    vid = bdd->add(MultimediaPtr(new Image("Logo ENST", "./image/Logo_Télécom_ParisTech.png", 640, 480)));
 
     bdd->remove("video2");
     bdd->remove("video3");
 
     bdd->find("video1");
-    //bdd->find("video2");
+    bdd->find("video2");
     bdd->find("Mes Videos");
+
+    bdd->play("Logo ENST");
 }
 
 /*
