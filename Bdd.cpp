@@ -2,52 +2,115 @@
 
 
 /*!
- * \brief Permet d'ajouter un objet multimédia à la Base de données
- * \param media Image que l'on souhaite ajouter
+ * \brief Permet d'ajouter une Image à la Base de données
+ * \param name
+ * \param pathname
+ * \param latitude
+ * \param longitude
  * \return
  */
-MultimediaPtr Bdd::add(MultimediaPtr media)
+MultimediaPtr Bdd::add(string name, string pathname, double latitude, double longitude)
 {
     MultimediaMap::iterator it;
-    string name = media.get()->getName();
 
     //Vérification que l'objet multimédia n'existe pas déjà dans la Bdd
     it = multimediaMap.find(name);
     if(it != multimediaMap.end())
     {
         cout << "---> Erreur : L'objet "+ name +" existe déjà dans la Bdd" << endl;
+        return nullptr;
     }
     else
     {
         cout << "--- Ajout de l'objet "+ name +" à la Bdd" << endl;
+        MultimediaPtr media = MultimediaPtr(new Image(name, pathname, latitude, longitude));
         multimediaMap[name] = media;
+        return media;
     }
-    return media;
+}
+
+
+/*!
+ * \brief Permet d'ajouter une Vidéo à la Base de données
+ * \param name
+ * \param pathname
+ * \param time
+ * \return
+ */
+MultimediaPtr Bdd::add(string name, string pathname, int time)
+{
+    MultimediaMap::iterator it;
+
+    //Vérification que l'objet multimédia n'existe pas déjà dans la Bdd
+    it = multimediaMap.find(name);
+    if(it != multimediaMap.end())
+    {
+        cout << "---> Erreur : L'objet "+ name +" existe déjà dans la Bdd" << endl;
+        return nullptr;
+    }
+    else
+    {
+        cout << "--- Ajout de l'objet "+ name +" à la Bdd" << endl;
+        MultimediaPtr media = MultimediaPtr(new Video(name, pathname, time));
+        multimediaMap[name] = media;
+        return media;
+    }
+}
+
+
+/*!
+ * \brief Permet d'ajouter un Film à la Base de données
+ * \param name
+ * \param pathname
+ * \param time
+ * \param chapter
+ * \param nbChapter
+ * \return
+ */
+MultimediaPtr Bdd::add(string name, string pathname, int time, const int *chapter, int nbChapter)
+{
+    MultimediaMap::iterator it;
+
+    //Vérification que l'objet multimédia n'existe pas déjà dans la Bdd
+    it = multimediaMap.find(name);
+    if(it != multimediaMap.end())
+    {
+        cout << "---> Erreur : L'objet "+ name +" existe déjà dans la Bdd" << endl;
+        return nullptr;
+    }
+    else
+    {
+        cout << "--- Ajout de l'objet "+ name +" à la Bdd" << endl;
+        MultimediaPtr media = MultimediaPtr(new Film(name, pathname, time, chapter, nbChapter));
+        multimediaMap[name] = media;
+        return media;
+    }
 }
 
 
 /*!
  * \brief Permet d'ajouter un groupe à la Base de données
- * \param group Groupe que l'on souhaite ajouter
+ * \param name Nom du groupe que l'on souhaite créer
  * \return
  */
-GroupPtr Bdd::add(GroupPtr group)
+GroupPtr Bdd::add(string name)
 {
     GroupMap::iterator it;
-    string name = group.get()->getName();
 
     //Vérification que le groupe n'existe pas déjà dans la Bdd
     it = groupMap.find(name);
     if(it != groupMap.end())
     {
         cout << "---> Erreur : Le groupe "+ name +" existe déjà dans la Bdd" << endl;
+        return nullptr;
     }
     else
     {
         cout << "--- Ajout du groupe "+ name +" à la Bdd" << endl;
+        GroupPtr group = GroupPtr(new Group(name));
         groupMap[name] = group;
+        return group;
     }
-    return group;
 }
 
 

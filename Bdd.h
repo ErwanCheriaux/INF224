@@ -35,8 +35,15 @@ class Bdd
         virtual ~Bdd(){cout << "---> Destruction de la BDD\n" << endl;}
 
         //methode
-        virtual MultimediaPtr add(MultimediaPtr media);
-        virtual GroupPtr      add(GroupPtr group);
+
+        virtual GroupPtr add(string name);
+
+        //image
+        virtual MultimediaPtr add(string name, string pathname, double latitude, double longitude);
+        //vidéo
+        virtual MultimediaPtr add(string name, string pathname, int time);
+        //film
+        virtual MultimediaPtr add(string name, string pathname, int time, const int *chapter, int nbChapter);
 
         virtual void remove(const string name);
 

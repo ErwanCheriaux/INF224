@@ -9,7 +9,7 @@ using namespace std;
 
 
 /*!
- * \brief La classe Multimedia est la classe de base de tout type de multimédia (vidéo, image, ...)
+ * \brief La classe Multimedia est la classe de base de tout objet multimédia (vidéo, image, ...)
  */
 class Multimedia
 {
