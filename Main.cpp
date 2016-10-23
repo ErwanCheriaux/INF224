@@ -23,15 +23,13 @@ int main()
     MultimediaPtr vid;
 
     vGroup = bdd->add(GroupPtr(new Group("Mes Videos")));
-    vGroup = bdd->add(GroupPtr(new Group("Mes Videos")));
 
     vid = bdd->add(MultimediaPtr(new Video("video1", "dossierPerso/film/video1.avi", 10)));
     vid = bdd->add(MultimediaPtr(new Video("video2", "dossierPerso/film/video2.avi", 15)));
     vid = bdd->add(MultimediaPtr(new Video("video best of", "dossierPerso/film/video_best_of.avi", 5)));
 
-    vid.get()->display(cout);
-
-    vid = bdd->add(MultimediaPtr(new Video("video2", "dossierPerso/film/video2.avi", 15)));
+    bdd->remove("video2");
+    bdd->remove("video3");
 }
 
 /*
