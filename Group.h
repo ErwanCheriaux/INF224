@@ -9,6 +9,8 @@
 #include <iostream>
 using namespace std;
 
+typedef shared_ptr<Multimedia> MultimediaPtr;
+
 /*!
  * \brief La classe Group est une liste contenant des produits multimédias (vidéo, image, ...)
  */

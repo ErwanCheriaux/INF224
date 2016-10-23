@@ -71,3 +71,7 @@ Lors de la suppression de tous les groupes contenant un même objet, on peut voi
 Etape terminée
 
 Etape 10:
+
+
+Q:Dans ce cas des shared_ptr le problème est à moitié résolu car on ne peut pas les détruire en faisant delete dessus (ca ne compilerait pas, voir précisions ci-dessous). Par contre on peut créer directement les objets avec new sans passer par les méthodes précédentes. Comment peut-on l'interdire, afin que seule la classe servant à manipuler les objets puisse en créer de nouveaux ? 
+R:

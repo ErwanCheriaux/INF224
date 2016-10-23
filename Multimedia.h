@@ -7,8 +7,6 @@
 #include <memory>
 using namespace std;
 
-class Multimedia;
-typedef shared_ptr<Multimedia> MultimediaPtr;
 
 /*!
  * \brief La classe Multimedia est la classe de base de tout type de multimédia (vidéo, image, ...)
