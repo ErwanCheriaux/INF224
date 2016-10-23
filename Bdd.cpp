@@ -9,6 +9,8 @@
 MultimediaPtr Bdd::add(MultimediaPtr media)
 {
     cout << "--- Ajout de l'objet "+ media.get()->getName() +" à la Bdd" << endl;
+
+    multimediaMap[media.get()->getName()] = media;
     return media;
 }
 
@@ -21,6 +23,8 @@ MultimediaPtr Bdd::add(MultimediaPtr media)
 GroupPtr Bdd::add(GroupPtr group)
 {
     cout << "--- Ajout du groupe "+ group.get()->getName() +" à la Bdd" << endl;
+
+    groupMap[group.get()->getName()] = group;
     return group;
 }
 
