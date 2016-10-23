@@ -44,6 +44,8 @@ class Bdd
         //film
         virtual MultimediaPtr add(string name, string pathname, int time, const int *chapter, int nbChapter);
 
+        virtual void addMultimediaToGroup(const string multimediaName, const string groupName);
+
         virtual void remove(const string name);
 
         virtual void find(const string name);

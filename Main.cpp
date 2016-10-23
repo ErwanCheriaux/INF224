@@ -24,12 +24,20 @@ int main()
     vid = bdd->add("video best of", "dossierPerso/film/video_best_of.avi", 5);
     vid = bdd->add("Logo ENST", "./image/Logo_Télécom_ParisTech.png", 640, 480);
 
+    bdd->addMultimediaToGroup("video1", "Mes Videos");
+    bdd->addMultimediaToGroup("video2", "Mes Videos");
+    bdd->addMultimediaToGroup("video best of", "Mes Videos");
+    bdd->addMultimediaToGroup("video best of 2eme partie", "Mes Videos");
+
+    bdd->find("Mes Videos");
+    /*
     bdd->remove("video2");
     bdd->remove("video3");
 
     bdd->find("video1");
     bdd->find("video2");
     bdd->find("Mes Videos");
+    */
 }
 
 /*
