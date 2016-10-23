@@ -146,7 +146,8 @@ void Bdd::addMultimediaToGroup(const string multimediaName, const string groupNa
         mp = multimediaMap[multimediaName];
         gp = groupMap[groupName];
 
-        gp.get()->push_back(mp);
+        gp.get()->push_back(mp); //ajout l'objet dans le groupe
+        gp.get()->unique(); //permet de supprimer les doublons
     }
 }
 
