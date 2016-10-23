@@ -2,7 +2,7 @@
 
 
 /*!
- * \brief Permet d'ajouter une Image à la Base de données
+ * \brief Permet d'ajouter un objet multimédia à la Base de données
  * \param media Image que l'on souhaite ajouter
  * \return
  */
@@ -51,6 +51,10 @@ GroupPtr Bdd::add(GroupPtr group)
 }
 
 
+/*!
+ * \brief Permet de supprimer un objet multimédia ou un groupe de la Base de données
+ * \param name Objet multimédia ou groupe que l'on souhaite supprimer
+ */
 void Bdd::remove(const string name)
 {
     MultimediaMap::iterator multimediaIt;
@@ -59,7 +63,7 @@ void Bdd::remove(const string name)
     multimediaIt = multimediaMap.find(name);
     groupIt = groupMap.find(name);
 
-    //Vérification que l'objet et/ou le groupe éxiste bien dans la Bdd
+    //Vérification que l'objet ou le groupe éxiste bien dans la Bdd
     if(multimediaIt == multimediaMap.end() && groupIt == groupMap.end())
     {
         cout << "---> Erreur : "+ name +" n'existe pas dans la Bdd" << endl;
@@ -76,13 +80,43 @@ void Bdd::remove(const string name)
     }
 }
 
-
+/*!
+ * \brief Permet de chercher un objet multimédia ou un groupe dans la Base de données
+ * \param name Objet multimédia ou groupe que l'on cherche
+ */
 void Bdd::find(const string name)
 {
+    MultimediaMap::iterator multimediaIt;
+    GroupMap::iterator groupIt;
 
+    multimediaIt = multimediaMap.find(name);
+    groupIt = groupMap.find(name);
+
+    //Vérification que l'objet et/ou le groupe éxiste bien dans la Bdd
+    if(multimediaIt == multimediaMap.end() && groupIt == groupMap.end())
+    {
+        cout << "--- "+ name +" n'existe pas dans la Bdd" << endl;
+    }
+    if(multimediaIt != multimediaMap.end())
+    {
+        cout << "--- Affichage de l'objet multimédia "+ name << endl;
+        MultimediaPtr mp;
+        mp = multimediaMap[name];
+        mp.get()->display(cout);
+    }
+    if(groupIt != groupMap.end())
+    {
+        cout << "--- Affichage du groupe "+ name << endl;
+        GroupPtr gp;
+        gp = groupMap[name];
+        gp.get()->display(cout);
+    }
 }
 
-
+/*!
+ * \brief Permet de jouer un objet multimédia de la Base de données
+ * \param name Objet multimédia que l'on souhaite jouer
+ */
 void Bdd::play(const string name)
 {
 

@@ -30,6 +30,10 @@ int main()
 
     bdd->remove("video2");
     bdd->remove("video3");
+
+    bdd->find("video1");
+    //bdd->find("video2");
+    bdd->find("Mes Videos");
 }
 
 /*

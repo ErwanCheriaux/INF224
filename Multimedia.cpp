@@ -12,7 +12,7 @@ Multimedia::Multimedia()
 
 
 /*!
- * \brief Classe de base de tout type de multimédia (vidéo, image, ...)
+ * \brief Classe de base de tout objet multimédia (vidéo, image, ...)
  * \param _name Nom du produit multimédia
  * \param _pathname Chemin relatif du produit multimédia
  */

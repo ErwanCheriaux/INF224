@@ -11,7 +11,7 @@ Group::Group()
 
 
 /*!
- * \brief Classe contenant une liste de produit multimédia (vidéo, image, ...)
+ * \brief Classe contenant une liste d'objet multimédia (vidéo, image, ...)
  * \param _name Nom du groupe
  */
 Group::Group(string name)
