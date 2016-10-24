@@ -14,7 +14,7 @@ PROG = INF224
 #
 # Fichiers sources (NE PAS METTRE les .h ni les .o seulement les .cpp)
 #
-SOURCES = Main.cpp Multimedia.cpp Film.cpp Group.cpp Bdd.cpp
+SOURCES = Main.cpp Multimedia.cpp Film.cpp Group.cpp Bdd.cpp cppsocket.cpp tcpserver.cpp
 
 #
 # Fichiers objets (ne pas modifier sauf si l'extension n'est pas .cpp)
@@ -43,7 +43,7 @@ LDFLAGS =
 # Librairies a utiliser
 # Example: LDLIBS = -L/usr/local/qt/lib -lqt
 #
-LDLIBS = 
+LDLIBS = -lpthread
 
 
 ##########################################

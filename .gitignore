@@ -1,6 +1,8 @@
 *.o
 INF224*
-depend-INF224
+client
+server
+depend-*
 doxygen_manual-1.8.12.pdf
 html
 latex
