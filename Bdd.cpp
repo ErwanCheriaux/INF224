@@ -120,7 +120,7 @@ GroupPtr Bdd::add(string name)
  * \param multimediaName Nom de l'objet multimédia que l'on souhaite associer
  * \param groupName Nom du groupe dans lequel on souhaite mettre l'objet multimédia
  */
-void Bdd::addMultimediaToGroup(const string multimediaName, const string groupName)
+int Bdd::addMultimediaToGroup(const string multimediaName, const string groupName)
 {
     MultimediaMap::iterator multimediaIt;
     GroupMap::iterator groupIt;
@@ -132,12 +132,14 @@ void Bdd::addMultimediaToGroup(const string multimediaName, const string groupNa
     if(multimediaIt == multimediaMap.end())
     {
         cerr << "---> Erreur : "+ multimediaName +" n'existe pas dans la Bdd" << endl;
+        return 1;
     }
-    if(groupIt == groupMap.end())
+    else if(groupIt == groupMap.end())
     {
         cerr << "---> Erreur : "+ groupName +" n'existe pas dans la Bdd" << endl;
+        return 2;
     }
-    if(multimediaIt != multimediaMap.end() && groupIt != groupMap.end())
+    else
     {
         cout << "--- l'objet multimédia "+ multimediaName +" est maintenant associé au groupe "+ groupName << endl;
         MultimediaPtr mp;
@@ -148,7 +150,8 @@ void Bdd::addMultimediaToGroup(const string multimediaName, const string groupNa
 
         gp.get()->push_back(mp); //ajout l'objet dans le groupe
         gp.get()->unique(); //permet de supprimer les doublons
-    }
+        return 0;
+    }    
 }
 
 
@@ -156,7 +159,7 @@ void Bdd::addMultimediaToGroup(const string multimediaName, const string groupNa
  * \brief Permet de supprimer un objet multimédia ou un groupe de la Base de données
  * \param name Objet multimédia ou groupe que l'on souhaite supprimer
  */
-void Bdd::remove(const string name)
+int Bdd::remove(const string name)
 {
     MultimediaMap::iterator multimediaIt;
     GroupMap::iterator groupIt;
@@ -168,6 +171,7 @@ void Bdd::remove(const string name)
     if(multimediaIt == multimediaMap.end() && groupIt == groupMap.end())
     {
         cerr << "---> Erreur : "+ name +" n'existe pas dans la Bdd" << endl;
+        return 0;
     }
     else if(multimediaIt != multimediaMap.end())
     {
@@ -184,11 +188,13 @@ void Bdd::remove(const string name)
             g->remove(mp);
         }
         multimediaMap.erase(name);
+        return 1;
     }
-    else if(groupIt != groupMap.end())
+    else
     {
         cout << "--- Suppression du groupe "+ name +" de la Bdd" << endl;
         groupMap.erase(name);
+        return 2;
     }
 }
 

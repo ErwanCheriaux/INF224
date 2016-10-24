@@ -65,23 +65,82 @@ class MyBase
 
         if(requestString == "addImage") //Ajout d'une image dans la Bdd
         {
+            getline(requestStream, requestString, ' ');
+            string name = requestString;
+            getline(requestStream, requestString, ' ');
+            string pathname = requestString;
 
+            double latitude;
+            double longitude;
+
+            requestStream >> latitude;
+            requestStream >> longitude;
+
+            if(bdd->add(name, pathname, latitude, longitude) != nullptr)
+                response = "--- Ajout de l'objet "+ name +" à la Bdd";
+            else
+                response = "---> Erreur : L'objet "+ name +" existe déjà dans la Bdd";
         }
         else if(requestString == "addVideo") //Ajout d'une vidéo dans la Bdd
         {
+            getline(requestStream, requestString, ' ');
+            string name = requestString;
+            getline(requestStream, requestString, ' ');
+            string pathname = requestString;
 
+            int time;
+
+            requestStream >> time;
+
+            if(bdd->add(name, pathname, time) != nullptr)
+                response = "--- Ajout de l'objet "+ name +" à la Bdd";
+            else
+                response = "---> Erreur : L'objet "+ name +" existe déjà dans la Bdd";
         }
         else if(requestString == "addFilm") //Ajout d'un film dans la Bdd
         {
+            getline(requestStream, requestString, ' ');
+            string name = requestString;
+            getline(requestStream, requestString, ' ');
+            string pathname = requestString;
 
+            int time;
+            int *chapter = nullptr;
+            int nbChapter;
+
+            requestStream >> time;
+            //requestStream >> chapter;
+            requestStream >> nbChapter;
+
+            if(bdd->add(name, pathname, time, chapter, nbChapter) != nullptr)
+                response = "--- Ajout de l'objet "+ name +" à la Bdd";
+            else
+                response = "---> Erreur : L'objet "+ name +" existe déjà dans la Bdd";
         }
         else if(requestString == "addGroup") //Ajout d'un groupe dans la Bdd
         {
+            getline(requestStream, requestString, ' ');
+            string name = requestString;
 
+            if(bdd->add(name) != nullptr)
+                response = "--- Ajout du groupe "+ name +" à la Bdd";
+            else
+                response = "---> Erreur : Le groupe "+ name +" existe déjà dans la Bdd";
         }
         else if(requestString == "addMultimediaToGroup") //Association d'un objet multimédia avec un groupe
         {
+            getline(requestStream, requestString, ' ');
+            string multimediaName = requestString;
+            getline(requestStream, requestString, ' ');
+            string groupName = requestString;
 
+            int res = bdd->addMultimediaToGroup(multimediaName, groupName);
+            if(res == 0)
+                response = "--- L'objet multimédia "+ multimediaName +" est maintenant associé au groupe "+ groupName;
+            else if(res == 1)
+                response = "---> Erreur : "+ multimediaName +" n'existe pas dans la Bdd";
+            else if(res == 2)
+                response = "---> Erreur : "+ groupName +" n'existe pas dans la Bdd";
         }
         else if(requestString == "remove") //Suppression d'un objet multimédia ou d'un groupe
         {
