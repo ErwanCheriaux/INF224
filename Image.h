@@ -10,6 +10,8 @@
  */
 class Image : public Multimedia
 {
+    friend class Bdd;
+
     private:
         // coordonnées de l'image
         double _latitude;

@@ -10,6 +10,8 @@
  */
 class Film : public Video
 {
+    friend class Bdd;
+
     private:
         int * _chapter;
         int _nbChapter;

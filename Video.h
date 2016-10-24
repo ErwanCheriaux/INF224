@@ -10,6 +10,8 @@
  */
 class Video : public Multimedia
 {
+    friend class Bdd;
+
     private:
         int _time;   // durée de la vidéo
 

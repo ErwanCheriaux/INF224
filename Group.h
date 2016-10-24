@@ -13,13 +13,17 @@ typedef shared_ptr<Multimedia> MultimediaPtr;
  */
 class Group : public list<MultimediaPtr>
 {
+    friend class Bdd;
+
     private:
         string _name;
 
-    public:
+    protected:
         //constructeur
         Group();
         Group(string name);
+
+    public:
 
         //destructeur
         virtual ~Group() {cout << "---> Destruction de " + getName() << endl;}
