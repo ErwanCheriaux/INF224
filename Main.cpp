@@ -144,7 +144,16 @@ class MyBase
         }
         else if(requestString == "remove") //Suppression d'un objet multimédia ou d'un groupe
         {
+            getline(requestStream, requestString, ' ');
+            string name = requestString;
 
+            int res = bdd->remove(name);
+            if(res == 0)
+                response = "---> Erreur : "+ name +" n'existe pas dans la Bdd";
+            else if(res == 1)
+                response = "--- Suppression de l'objet "+ name +" de la Bdd";
+            else if(res == 2)
+                response = "--- Suppression du groupe "+ name +" de la Bdd";
         }
         else if(requestString == "find") //Recherche un objet multimédia ou un groupe
         {
