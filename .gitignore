@@ -1,7 +1,6 @@
 *.o
 INF224*
-INF224-Projet*
-depend-INF224-Projet
+depend-INF224
 doxygen_manual-1.8.12.pdf
 html
 latex
