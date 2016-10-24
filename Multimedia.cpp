@@ -29,5 +29,5 @@ Multimedia::Multimedia(string name, string pathname)
  */
 void Multimedia::display(ostream& s) const
 {
-    s << "name:" << getName() << "\n" << "pathname:" << getPathname() << endl;
+    s << "name:" << getName() << ";" << "pathname:" << getPathname() +";";
 }

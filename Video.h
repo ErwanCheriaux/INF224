@@ -43,7 +43,7 @@ class Video : public Multimedia
         }
 
         virtual void display(ostream& s) const override
-        {Multimedia::display(s); s << "time:" << getTime() << "\n" << endl;}
+        {Multimedia::display(s); s << "time:" << getTime() +";";}
 };
 
 #endif // VIDEO_H

@@ -79,3 +79,7 @@ R:Il faut mettre tous les constructeurs de la classe Multimedia en protected. Il
 Etape terminée
 
 Etape11:
+Réailsation d'un client/serveur
+
+Q:Sachant que cette méthode peut appartenir à n'importe quelle classe, quelle est la solution la plus simple ?
+R:La solution la plus simple serait de faire apartenir cette méthode à la classe Bdd qui gère la cohérence des données.

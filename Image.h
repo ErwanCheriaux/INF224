@@ -47,7 +47,7 @@ class Image : public Multimedia
         }
 
         virtual void display(ostream& s) const override
-        {Multimedia::display(s); s << "latitude:" << getLatitude() << "\n" << "longitude:" << getLongitude() << "\n" << endl;}
+        {Multimedia::display(s); s << "latitude:" << getLatitude() << ";" << "longitude:" << getLongitude() << ";";}
 };
 
 #endif // IMAGE_H

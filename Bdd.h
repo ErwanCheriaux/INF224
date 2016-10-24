@@ -48,7 +48,7 @@ class Bdd
 
         virtual int remove(const string name);
 
-        virtual void find(const string name);
+        virtual void find(ostream& s, const string name);
 
         virtual void play(const string name);
 };

@@ -127,7 +127,7 @@ class MyBase
             else
                 response = "---> Erreur : Le groupe "+ name +" existe déjà dans la Bdd";
         }
-        else if(requestString == "addMultimediaToGroup") //Association d'un objet multimédia avec un groupe
+        else if(requestString == "addTo") //Association d'un objet multimédia avec un groupe
         {
             getline(requestStream, requestString, ' ');
             string multimediaName = requestString;
@@ -157,7 +157,13 @@ class MyBase
         }
         else if(requestString == "find") //Recherche un objet multimédia ou un groupe
         {
+            stringstream responseStream;
 
+            getline(requestStream, requestString, ' ');
+            string name = requestString;
+
+            bdd->find(responseStream, name);
+            responseStream >> response;
         }
         else if(requestString == "play") //Joue un objet multimédia
         {
@@ -206,34 +212,3 @@ int main(int argc, char* argv[])
 
     return 0;
 }
-
-/*
-Bdd * bdd = new Bdd();
-GroupPtr vGroup;
-MultimediaPtr vid;
-
-vGroup = bdd->add("Mes Videos");
-vGroup = bdd->add("Mes Documents");
-
-vid = bdd->add("video1", "dossierPerso/film/video1.avi", 10);
-vid = bdd->add("video2", "dossierPerso/film/video2.avi", 15);
-vid = bdd->add("video best of", "dossierPerso/film/video_best_of.avi", 5);
-vid = bdd->add("Logo ENST", "./image/Logo_Télécom_ParisTech.png", 640, 480);
-
-bdd->addMultimediaToGroup("video1", "Mes Videos");
-bdd->addMultimediaToGroup("video2", "Mes Videos");
-bdd->addMultimediaToGroup("video best of", "Mes Videos");
-
-bdd->addMultimediaToGroup("video1", "Mes Documents");
-bdd->addMultimediaToGroup("video2", "Mes Documents");
-bdd->addMultimediaToGroup("video best of", "Mes Documents");
-bdd->addMultimediaToGroup("Logo ENST", "Mes Documents");
-
-bdd->find("Mes Videos");
-bdd->find("Mes Documents");
-
-bdd->remove("video2");
-
-bdd->find("Mes Videos");
-bdd->find("Mes Documents");
-*/

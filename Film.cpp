@@ -82,8 +82,8 @@ void Film::displayChapter(ostream& s) const
     string str = "";
     for(int i=0; i < _nbChapter; i++)
     {
-        str = str + "Chapitre " + to_string(i) + ": " + to_string(_chapter[i]) + "\n";
+        str = str + "Chapitre " + to_string(i) + ": " + to_string(_chapter[i]) + ";";
     }
-    str = "nbChapter: " + to_string(_nbChapter) + "\n" + str;
-    s << str << endl;
+    str = "nbChapter: " + to_string(_nbChapter) + ";" + str;
+    s << str +";";
 }

@@ -203,7 +203,7 @@ int Bdd::remove(const string name)
  * \brief Permet de chercher un objet multimédia ou un groupe dans la Base de données
  * \param name Objet multimédia ou groupe que l'on cherche
  */
-void Bdd::find(const string name)
+void Bdd::find(ostream& s, const string name)
 {
     MultimediaMap::iterator multimediaIt;
     GroupMap::iterator groupIt;
@@ -214,21 +214,21 @@ void Bdd::find(const string name)
     //Vérification que l'objet et/ou le groupe existe bien dans la Bdd
     if(multimediaIt == multimediaMap.end() && groupIt == groupMap.end())
     {
-        cout << "--- "+ name +" n'existe pas dans la Bdd" << endl;
+        s << "--- "+ name +" n'existe pas dans la Bdd;";
     }
     if(multimediaIt != multimediaMap.end())
     {
-        cout << "--- Affichage de l'objet multimédia "+ name << endl;
+        s << "--- Affichage de l'objet multimédia "+ name +";";
         MultimediaPtr mp;
         mp = multimediaMap[name];
-        mp.get()->display(cout);
+        mp.get()->display(s);
     }
     if(groupIt != groupMap.end())
     {
-        cout << "--- Affichage du groupe "+ name << endl;
+        s << "--- Affichage du groupe "+ name +";";
         GroupPtr gp;
         gp = groupMap[name];
-        gp.get()->display(cout);
+        gp.get()->display(s);
     }
 }
 
