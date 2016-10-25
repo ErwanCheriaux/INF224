@@ -7,6 +7,8 @@ Développeur: Erwan CHERIAUX
 projet C++ consultable a l'adresse suivante:
 http://perso.telecom-paristech.fr/~elc/cpp/TP-C++.html
 
+#Partie C++
+
 ##Etape 1:
 Création d'un dépot git à l'adresse suivante:
 https://github.com/KataKoeur/INF224.git
@@ -97,3 +99,11 @@ Q:Sachant que cette méthode peut appartenir à n'importe quelle classe, quelle 
 R:La solution la plus simple serait de faire apartenir cette méthode à la classe Bdd qui gère la cohérence des données.
 
 Etape terminée. 
+
+#Partie Swing
+
+##Etape 1:
+Création d'une fenetre principale contenant 3 boutons et d'une zone de texte. 
+
+Q:Lancez votre programme, cliquez plusieurs fois sur les deux premiers bouton, retaillez la fenêtre. Que constate-t'on ? 
+R:
