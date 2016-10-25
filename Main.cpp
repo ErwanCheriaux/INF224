@@ -27,10 +27,30 @@ const int PORT = 3331;
 
 class MyBase
 {
-    private:
+private:
         Bdd * bdd = new Bdd();
 
-    public:
+public:
+    void initBdd()
+    {
+        bdd->add("mesVideos");
+        bdd->add("mesDocuments");
+
+        bdd->add("video1", "dossierPerso/film/video1.avi", 10);
+        bdd->add("video2", "dossierPerso/film/video2.avi", 15);
+        bdd->add("video_best_of", "dossierPerso/film/video_best_of.avi", 5);
+        bdd->add("Logo_ENST", "./image/Logo_Télécom_ParisTech.png", 640, 480);
+
+        bdd->addMultimediaToGroup("video1", "mesVideos");
+        bdd->addMultimediaToGroup("video2", "mesVideos");
+        bdd->addMultimediaToGroup("video_best_of", "mesVideos");
+
+        bdd->addMultimediaToGroup("video1", "mesDocuments");
+        bdd->addMultimediaToGroup("video2", "mesDocuments");
+        bdd->addMultimediaToGroup("video_best_of", "mesDocuments");
+        bdd->addMultimediaToGroup("Logo_ENST", "mesDocuments");
+    }
+
        /* Cette méthode est appelée chaque fois qu'il y a une requête à traiter.
         * Ca doit etre une methode de la classe qui gere les données, afin qu'elle
         * puisse y accéder.
@@ -63,7 +83,13 @@ class MyBase
         // - si le traitement modifie les donnees inclure: TCPLock lock(cnx, true);
         // - sinon juste: TCPLock lock(cnx);
 
-        if(requestString == "addImage") //Ajout d'une image dans la Bdd
+        if(requestString == "help") //Affiche les instructions possibles
+        {
+            stringstream responseStream;
+            responseStream << "--- Help;addImage, addVideo, addFilm, addTo, remove, find, play.";
+            getline(responseStream, response);
+        }
+        else if(requestString == "addImage") //Ajout d'une image dans la Bdd
         {
             getline(requestStream, requestString, ' ');
             string name = requestString;
@@ -163,7 +189,7 @@ class MyBase
             string name = requestString;
 
             bdd->find(responseStream, name);
-            responseStream >> response;
+            getline(responseStream, response);
         }
         else if(requestString == "play") //Joue un objet multimédia
         {
@@ -196,6 +222,8 @@ int main(int argc, char* argv[])
 
     // cree l'objet qui gère les données
     shared_ptr<MyBase> base(new MyBase());
+
+    base.get()->initBdd();
 
     // le serveur appelera cette méthode chaque fois qu'il y a une requête
     server->setCallback(*base, &MyBase::processRequest);
