@@ -86,8 +86,13 @@ public:
         if(requestString == "help") //Affiche les instructions possibles
         {
             stringstream responseStream;
-            responseStream << "--- Help;addImage, addVideo, addFilm, addTo, remove, find, play.";
+            responseStream << "--- Help;- init;- addImage;- addVideo;- addFilm;- addTo;- remove;- find;- play;";
             getline(responseStream, response);
+        }
+        else if(requestString == "init") //Initialise la Bdd avec des objets multimédias et des groupes
+        {
+            this->initBdd();
+            response = "--- Initialisation terminée";
         }
         else if(requestString == "addImage") //Ajout d'une image dans la Bdd
         {
@@ -193,7 +198,11 @@ public:
         }
         else if(requestString == "play") //Joue un objet multimédia
         {
+            getline(requestStream, requestString, ' ');
+            string name = requestString;
 
+            bdd->play(name);
+            response = "Lecture de l'objet "+ name +" en cours";
         }
         else //Instruction inexistante
         {
@@ -223,8 +232,6 @@ int main(int argc, char* argv[])
     // cree l'objet qui gère les données
     shared_ptr<MyBase> base(new MyBase());
 
-    base.get()->initBdd();
-
     // le serveur appelera cette méthode chaque fois qu'il y a une requête
     server->setCallback(*base, &MyBase::processRequest);
 
@@ -232,7 +239,7 @@ int main(int argc, char* argv[])
     cout << "Starting Server on port " << PORT << endl;
     int status = server->run(PORT);
 
-    // en cas d'erreur
+    // en cas d'erreur
     if (status < 0) {
     cerr << "Could not start Server on port " << PORT << endl;
     return 1;

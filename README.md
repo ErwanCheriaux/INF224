@@ -78,8 +78,11 @@ Q:On peut créer directement les objets avec new sans passer par les méthodes p
 R:Il faut mettre tous les constructeurs de la classe Multimedia en protected. Il faut faire de même avec toutes ses classes filles. Enfin, il ajouter l'aurorisation à la classe Bdd d'accèder au constructeur avec le mot friend. Aussi, il est impossible d'instancier un objet multimédia depuis le main.
 Etape terminée
 
-Etape11:
+Etape 11:
 Réailsation d'un client/serveur
 
 Q:Sachant que cette méthode peut appartenir à n'importe quelle classe, quelle est la solution la plus simple ?
 R:La solution la plus simple serait de faire apartenir cette méthode à la classe Bdd qui gère la cohérence des données.
+Etape terminée
+
+Etape 12:
