@@ -6,8 +6,14 @@
 #include "Video.h"
 #include "Film.h"
 #include "Group.h"
+#include "tcpserver.h"
 
 #include <map>
+#include <cctype>
+#include <stdexcept>
+#include <sstream>
+
+using namespace cppu;
 
 typedef shared_ptr<Multimedia> MultimediaPtr;
 typedef shared_ptr<Group> GroupPtr;
@@ -51,6 +57,9 @@ class Bdd
         virtual void find(ostream& s, const string name);
 
         virtual void play(const string name);
+
+        virtual void initBdd();
+        virtual bool processRequest(TCPConnection& cnx, const string& request, string& response);
 };
 
 #endif // BDD_H
