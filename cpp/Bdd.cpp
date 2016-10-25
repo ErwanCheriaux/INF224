@@ -257,6 +257,11 @@ void Bdd::play(const string name)
     }
 }
 
+
+/*!
+ * \brief Permet de remplire la Base de données avec divers objets multimédias et groupe.
+ *        Cela permet ainsi d'aller plus vite pour débugger.
+ */
 void Bdd::initBdd()
 {
     add("mesVideos");
@@ -277,22 +282,15 @@ void Bdd::initBdd()
     addMultimediaToGroup("Logo_ENST", "mesDocuments");
 }
 
-   /* Cette méthode est appelée chaque fois qu'il y a une requête à traiter.
-    * Ca doit etre une methode de la classe qui gere les données, afin qu'elle
-    * puisse y accéder.
-    *
-    * Arguments:
-    * - 'request' contient la requête
-    * - 'response' sert à indiquer la réponse qui sera renvoyée au client
-    * - si la fonction renvoie false la connexion est close.
-    *
-    * Cette fonction peut etre appelée en parallele par plusieurs threads (il y a
-    * un thread par client).
-    *
-    * Pour eviter les problemes de concurrence on peut créer un verrou en creant
-    * une variable Lock **dans la pile** qui doit etre en mode WRITE (2e argument = true)
-    * si la fonction modifie les donnees.
-    */
+
+/*!
+ * \brief Cette méthode est appelée chaque fois qu'il y a une requête à traiter.
+ *        Ca doit etre une methode de la classe qui gere les données, afin qu'elle puisse y accéder.
+ * \param cnx Permet d'activer ou non un verrou pour ne pas laisser plusieurs clients modifier la Bdd en même temps
+ * \param request contient la requête
+ * \param response sert à indiquer la réponse qui sera renvoyée au client, si la fonction renvoie false la connexion est close.
+ * \return
+ */
 bool Bdd::processRequest(TCPConnection& cnx, const string& request, string& response)
 {
     cerr << "\nRequest: '" << request << "'" << endl;
@@ -319,7 +317,7 @@ bool Bdd::processRequest(TCPConnection& cnx, const string& request, string& resp
     else if(requestString == "init") //Initialise la Bdd avec des objets multimédias et des groupes
     {
         TCPLock lock(cnx, true);
-        this->initBdd();
+        initBdd();
         response = "--- Initialisation terminée";
     }
     else if(requestString == "addImage") //Ajout d'une image dans la Bdd
