@@ -28,7 +28,7 @@ const int PORT = 3331;
 class MyBase
 {
 private:
-        Bdd * bdd = new Bdd();
+        Bdd * bdd = new Bdd();        
 
 public:
     void initBdd()
@@ -85,17 +85,20 @@ public:
 
         if(requestString == "help") //Affiche les instructions possibles
         {
+            TCPLock lock(cnx, false);
             stringstream responseStream;
             responseStream << "--- Help;- init;- addImage;- addVideo;- addFilm;- addTo;- remove;- find;- play;";
             getline(responseStream, response);
         }
         else if(requestString == "init") //Initialise la Bdd avec des objets multimédias et des groupes
         {
+            TCPLock lock(cnx, true);
             this->initBdd();
             response = "--- Initialisation terminée";
         }
         else if(requestString == "addImage") //Ajout d'une image dans la Bdd
         {
+            TCPLock lock(cnx, true);
             getline(requestStream, requestString, ' ');
             string name = requestString;
             getline(requestStream, requestString, ' ');
@@ -114,6 +117,7 @@ public:
         }
         else if(requestString == "addVideo") //Ajout d'une vidéo dans la Bdd
         {
+            TCPLock lock(cnx, true);
             getline(requestStream, requestString, ' ');
             string name = requestString;
             getline(requestStream, requestString, ' ');
@@ -130,6 +134,7 @@ public:
         }
         else if(requestString == "addFilm") //Ajout d'un film dans la Bdd
         {
+            TCPLock lock(cnx, true);
             getline(requestStream, requestString, ' ');
             string name = requestString;
             getline(requestStream, requestString, ' ');
@@ -150,6 +155,7 @@ public:
         }
         else if(requestString == "addGroup") //Ajout d'un groupe dans la Bdd
         {
+            TCPLock lock(cnx, true);
             getline(requestStream, requestString, ' ');
             string name = requestString;
 
@@ -160,6 +166,7 @@ public:
         }
         else if(requestString == "addTo") //Association d'un objet multimédia avec un groupe
         {
+            TCPLock lock(cnx, true);
             getline(requestStream, requestString, ' ');
             string multimediaName = requestString;
             getline(requestStream, requestString, ' ');
@@ -175,6 +182,7 @@ public:
         }
         else if(requestString == "remove") //Suppression d'un objet multimédia ou d'un groupe
         {
+            TCPLock lock(cnx, true);
             getline(requestStream, requestString, ' ');
             string name = requestString;
 
@@ -188,6 +196,7 @@ public:
         }
         else if(requestString == "find") //Recherche un objet multimédia ou un groupe
         {
+            TCPLock lock(cnx, false);
             stringstream responseStream;
 
             getline(requestStream, requestString, ' ');
@@ -198,6 +207,7 @@ public:
         }
         else if(requestString == "play") //Joue un objet multimédia
         {
+            TCPLock lock(cnx, false);
             getline(requestStream, requestString, ' ');
             string name = requestString;
 
@@ -206,6 +216,7 @@ public:
         }
         else //Instruction inexistante
         {
+            TCPLock lock(cnx, false);
             response = "Erreur : Instruction inexistante !!!";
         }
 
