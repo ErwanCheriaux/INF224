@@ -61,11 +61,11 @@ public class Window extends JFrame{ // fenetre principale
     menu.add(playAction);
     menu.add(exitAction);
     menuBar.add(menu);
+    toolBar.add(findAction);
+    toolBar.add(playAction);
+    toolBar.add(exitAction);
+    menuBar.add(toolBar);
     setJMenuBar(menuBar);
-
-    //toolBar
-    setPreferredSize(new Dimension(450, 130));
-    add(toolBar, BorderLayout.PAGE_START);
 
     //panel pour les boutons et le textField
     panel.setLayout(new GridLayout(1, 4));
