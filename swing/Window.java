@@ -13,8 +13,8 @@ public class Window extends JFrame{ // fenetre principale
   private static final long serialVersionUID = 1L;
 
   private JPanel  panel;
-  private JButton button1;
-  private JButton button2;
+  private JButton buttonFind;
+  private JButton buttonPlay;
   private JButton buttonExit;
   private JTextArea textArea;
   private JTextField textField;
@@ -28,14 +28,14 @@ public class Window extends JFrame{ // fenetre principale
 
     //new
     panel = new JPanel();
-    button1 = new JButton("Bouton 1");
-    button2 = new JButton("Bouton 2");
+    buttonFind = new JButton("Bouton 1");
+    buttonPlay = new JButton("Bouton 2");
     buttonExit = new JButton("EXIT");
     textField = new JTextField();
     textArea = new JTextArea(5,5);
     scroll = new JScrollPane(textArea);
     menuBar = new JMenuBar();
-    menu = new JMenu("A Menu");
+    menu = new JMenu("Menu");
     toolBar = new JToolBar("ToolBar");
 
     //Action
@@ -43,8 +43,8 @@ public class Window extends JFrame{ // fenetre principale
     PlayAction playAction = new PlayAction();
     ExitAction exitAction = new ExitAction();
 
-    button1.setAction(findAction);
-    button2.setAction(playAction);
+    buttonFind.setAction(findAction);
+    buttonPlay.setAction(playAction);
     buttonExit.setAction(exitAction);
 
     //Parametre fenetre
@@ -57,6 +57,9 @@ public class Window extends JFrame{ // fenetre principale
     setLayout(new BorderLayout());
 
     //Menu
+    menu.add(findAction);
+    menu.add(playAction);
+    menu.add(exitAction);
     menuBar.add(menu);
     setJMenuBar(menuBar);
 
@@ -67,8 +70,8 @@ public class Window extends JFrame{ // fenetre principale
     //panel pour les boutons et le textField
     panel.setLayout(new GridLayout(1, 4));
     panel.add(textField);
-    panel.add(button1);
-    panel.add(button2);
+    panel.add(buttonFind);
+    panel.add(buttonPlay);
     panel.add(buttonExit);
 
     //Ajout des composants sur la fenetre
@@ -79,8 +82,8 @@ public class Window extends JFrame{ // fenetre principale
   }
 
   //Classes imbriquées
-  class FindAction extends AbstractAction {
-    public FindAction() {
+  private class FindAction extends AbstractAction {
+    private FindAction() {
         super("Find");
     }
 
@@ -89,8 +92,8 @@ public class Window extends JFrame{ // fenetre principale
     }
   }
 
-  class PlayAction extends AbstractAction {
-    public PlayAction() {
+  private class PlayAction extends AbstractAction {
+    private PlayAction() {
         super("Play");
     }
 
@@ -99,8 +102,8 @@ public class Window extends JFrame{ // fenetre principale
     }
   }
 
-  class ExitAction extends AbstractAction {
-    public ExitAction() {
+  private class ExitAction extends AbstractAction {
+    private ExitAction() {
         super("Exit");
     }
 
