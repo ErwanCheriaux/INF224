@@ -87,7 +87,6 @@ public class Window extends JFrame{ // fenetre principale
     } catch (java.io.IOException e) {
       client = null;
     }
-
   }
 
   //Classes imbriquées
@@ -97,7 +96,11 @@ public class Window extends JFrame{ // fenetre principale
     }
 
     public void actionPerformed(ActionEvent e) {
-        System.out.println("FIND");
+        String text = textField.getText();
+
+        System.out.println("FIND: "+ text);
+        text = client.send("find "+ text);
+        textArea.append(text);
     }
   }
 
