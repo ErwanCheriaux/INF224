@@ -38,10 +38,14 @@ public class Window extends JFrame{ // fenetre principale
     menu = new JMenu("A Menu");
     toolBar = new JToolBar("ToolBar");
 
-    //Listner
-    button1.addActionListener(new Button1Listner());
-    button2.addActionListener(new Button2Listner());
-    buttonExit.addActionListener(new ButtonExitListner());
+    //Action
+    FindAction findAction = new FindAction();
+    PlayAction playAction = new PlayAction();
+    ExitAction exitAction = new ExitAction();
+
+    button1.setAction(findAction);
+    button2.setAction(playAction);
+    buttonExit.setAction(exitAction);
 
     //Parametre fenetre
     setTitle("Client Multimédia");
@@ -75,22 +79,33 @@ public class Window extends JFrame{ // fenetre principale
   }
 
   //Classes imbriquées
-  class Button1Listner implements ActionListener{
-    public void actionPerformed(ActionEvent e){
-      textArea.append(textField.getText() + "\r\n");
+  class FindAction extends AbstractAction {
+    public FindAction() {
+        super("Find");
+    }
+
+    public void actionPerformed(ActionEvent e) {
+        System.out.println("FIND");
     }
   }
 
-  class Button2Listner implements ActionListener{
-    public void actionPerformed(ActionEvent e){
-      System.out.println("Bouton 2 appuyé");
+  class PlayAction extends AbstractAction {
+    public PlayAction() {
+        super("Play");
+    }
+
+    public void actionPerformed(ActionEvent e) {
+        System.out.println("PLAY");
     }
   }
 
-  class ButtonExitListner implements ActionListener{
-    public void actionPerformed(ActionEvent e){
-      System.out.println("Bouton exit appuyé");
-      System.exit(0);
+  class ExitAction extends AbstractAction {
+    public ExitAction() {
+        super("Exit");
+    }
+
+    public void actionPerformed(ActionEvent e) {
+        System.out.println("EXIT");
     }
   }
 }
