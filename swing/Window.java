@@ -19,6 +19,10 @@ public class Window extends JFrame{ // fenetre principale
   private JTextArea textArea;
   private JTextField textField;
   private JScrollPane scroll;
+  private JMenuBar menuBar;
+  private JMenu menu;
+  private JToolBar toolBar;
+
 
   public Window(){
 
@@ -30,6 +34,9 @@ public class Window extends JFrame{ // fenetre principale
     textField = new JTextField();
     textArea = new JTextArea(5,5);
     scroll = new JScrollPane(textArea);
+    menuBar = new JMenuBar();
+    menu = new JMenu("A Menu");
+    toolBar = new JToolBar("ToolBar");
 
     //Listner
     button1.addActionListener(new Button1Listner());
@@ -44,6 +51,14 @@ public class Window extends JFrame{ // fenetre principale
     //pack(); //minimise la fenetre lors de son ouverture
     setMinimumSize(new Dimension(300,300));
     setLayout(new BorderLayout());
+
+    //Menu
+    menuBar.add(menu);
+    setJMenuBar(menuBar);
+
+    //toolBar
+    setPreferredSize(new Dimension(450, 130));
+    add(toolBar, BorderLayout.PAGE_START);
 
     //panel pour les boutons et le textField
     panel.setLayout(new GridLayout(1, 4));
@@ -75,6 +90,7 @@ public class Window extends JFrame{ // fenetre principale
   class ButtonExitListner implements ActionListener{
     public void actionPerformed(ActionEvent e){
       System.out.println("Bouton exit appuyé");
+      System.exit(0);
     }
   }
 }
