@@ -1,8 +1,9 @@
 import javax.swing.*;
 
 import java.awt.BorderLayout;
-
+import java.awt.Dimension;
 import java.awt.Color;
+
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -16,6 +17,7 @@ public class Window extends JFrame{ // fenetre principale
   private JButton button2;
   private JButton buttonExit;
   private JTextArea textArea;
+  private JTextField mediaName;
 
   public Window(){
 
@@ -24,19 +26,22 @@ public class Window extends JFrame{ // fenetre principale
     button1 = new JButton("Bouton 1");
     button2 = new JButton("Bouton 2");
     buttonExit = new JButton("EXIT");
+    mediaName = new JTextField();
 
     textArea = new JTextArea(5,5);
 
-    //button1.addActionListener(new Button1Listner());
-    //button2.addActionListener(new Button2Listner());
+    button1.addActionListener(new Button1Listner());
+    button2.addActionListener(new Button2Listner());
 
     setTitle("Client Multimédia");
-    setSize(300, 150);
+    setSize(400, 200);
     setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     setLocationRelativeTo(null);
-    //pack();
+    //pack(); //minimise la fenetre lors de son ouverture
+    setMinimumSize(new Dimension(300,300));
+
     panel.setLayout(new GridLayout(1, 3));
-    //getContentPane().add(button1, BorderLayout.CENTER);
+    panel.add(mediaName);
     panel.add(button1);
     panel.add(button2);
     panel.add(buttonExit);
@@ -50,7 +55,7 @@ public class Window extends JFrame{ // fenetre principale
   //Classes imbriquées
   class Button1Listner implements ActionListener{
     public void actionPerformed(ActionEvent e){
-      System.out.println("Bouton 1 appuyé");
+      textArea.append(mediaName.getText() + "\r\n");
     }
   }
 
