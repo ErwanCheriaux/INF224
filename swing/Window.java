@@ -17,45 +17,52 @@ public class Window extends JFrame{ // fenetre principale
   private JButton button2;
   private JButton buttonExit;
   private JTextArea textArea;
-  private JTextField mediaName;
+  private JTextField textField;
+  private JScrollPane scroll;
 
   public Window(){
 
+    //new
     panel = new JPanel();
-
     button1 = new JButton("Bouton 1");
     button2 = new JButton("Bouton 2");
     buttonExit = new JButton("EXIT");
-    mediaName = new JTextField();
-
+    textField = new JTextField();
     textArea = new JTextArea(5,5);
+    scroll = new JScrollPane(textArea);
 
+    //Listner
     button1.addActionListener(new Button1Listner());
     button2.addActionListener(new Button2Listner());
+    buttonExit.addActionListener(new ButtonExitListner());
 
+    //Parametre fenetre
     setTitle("Client Multimédia");
     setSize(400, 200);
     setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     setLocationRelativeTo(null);
     //pack(); //minimise la fenetre lors de son ouverture
     setMinimumSize(new Dimension(300,300));
+    setLayout(new BorderLayout());
 
-    panel.setLayout(new GridLayout(1, 3));
-    panel.add(mediaName);
+    //panel pour les boutons et le textField
+    panel.setLayout(new GridLayout(1, 4));
+    panel.add(textField);
     panel.add(button1);
     panel.add(button2);
     panel.add(buttonExit);
 
-    setLayout(new BorderLayout());
-    add(textArea, BorderLayout.CENTER);
+    //Ajout des composants sur la fenetre
+    add(scroll, BorderLayout.CENTER);
     add(panel, BorderLayout.SOUTH);
+
     setVisible(true);
   }
 
   //Classes imbriquées
   class Button1Listner implements ActionListener{
     public void actionPerformed(ActionEvent e){
-      textArea.append(mediaName.getText() + "\r\n");
+      textArea.append(textField.getText() + "\r\n");
     }
   }
 
