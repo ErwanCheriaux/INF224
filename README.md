@@ -107,3 +107,12 @@ Création d'une fenetre principale contenant 3 boutons et d'une zone de texte.
 
 Q:Lancez votre programme, cliquez plusieurs fois sur les deux premiers bouton, retaillez la fenêtre. Que constate-t'on ? 
 R:
+
+Etape terminée. 
+
+##Etape 2:
+Ajout d'un menu. Utilisation des Actions qui remplace les listener. 
+
+Etape terminée. 
+
+##Etape3:
