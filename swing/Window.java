@@ -12,6 +12,8 @@ public class Window extends JFrame{ // fenetre principale
 
   private static final long serialVersionUID = 1L;
 
+  private Client client;
+
   private JPanel  panel;
   private JButton buttonFind;
   private JButton buttonPlay;
@@ -79,6 +81,13 @@ public class Window extends JFrame{ // fenetre principale
     add(panel, BorderLayout.SOUTH);
 
     setVisible(true);
+
+    try {
+      client = new Client(Client.DEFAULT_HOST, Client.DEFAULT_PORT);
+    } catch (java.io.IOException e) {
+      client = null;
+    }
+
   }
 
   //Classes imbriquées
