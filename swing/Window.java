@@ -58,6 +58,9 @@ public class Window extends JFrame{ // fenetre principale
     setMinimumSize(new Dimension(300,300));
     setLayout(new BorderLayout());
 
+    //Zone de text
+    textArea.setEditable(false);
+
     //Menu
     menu.add(findAction);
     menu.add(playAction);
