@@ -44,6 +44,7 @@ public class Window extends JFrame{ // fenetre principale
     FindAction findAction = new FindAction();
     PlayAction playAction = new PlayAction();
     ExitAction exitAction = new ExitAction();
+    HelpAction helpAction = new HelpAction();
 
     buttonFind.setAction(findAction);
     buttonPlay.setAction(playAction);
@@ -51,11 +52,11 @@ public class Window extends JFrame{ // fenetre principale
 
     //Parametre fenetre
     setTitle("Client Multimédia");
-    setSize(400, 200);
+    setSize(700, 300);
     setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     setLocationRelativeTo(null);
     //pack(); //minimise la fenetre lors de son ouverture
-    setMinimumSize(new Dimension(300,300));
+    setMinimumSize(new Dimension(700,300));
     setLayout(new BorderLayout());
 
     //Zone de text
@@ -64,10 +65,12 @@ public class Window extends JFrame{ // fenetre principale
     //Menu
     menu.add(findAction);
     menu.add(playAction);
+    menu.add(helpAction);
     menu.add(exitAction);
     menuBar.add(menu);
     toolBar.add(findAction);
     toolBar.add(playAction);
+    toolBar.add(helpAction);
     toolBar.add(exitAction);
     menuBar.add(toolBar);
     setJMenuBar(menuBar);
@@ -130,6 +133,23 @@ public class Window extends JFrame{ // fenetre principale
     public void actionPerformed(ActionEvent e) {
         System.out.println("EXIT");
         System.exit(0);
+    }
+  }
+
+  private class HelpAction extends AbstractAction {
+    private HelpAction() {
+        super("Help");
+    }
+
+    public void actionPerformed(ActionEvent e) {
+        System.out.println("HELP");
+        textArea.append("--- Help\n");
+        textArea.append("Veuillez entrer dans la zone de texte en bas à gauche\n");
+        textArea.append("le fichier (ou le groupe) que vous souhaitez rechercher ou jouer\n");
+        textArea.append("----------------------------------------------------------------------------");
+        textArea.append("----------------------------------------------------------------------------\n");
+        textArea.append("Listes des fichiers existant dans la Base de données:\tvideo1, video2, video_best_of, Logo_ENST\n");
+        textArea.append("Listes des groupes existant dans la Base de données:\tmesVideos, mesDocuments\n\n");
     }
   }
 }
