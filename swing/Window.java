@@ -110,7 +110,11 @@ public class Window extends JFrame{ // fenetre principale
     }
 
     public void actionPerformed(ActionEvent e) {
-        System.out.println("PLAY");
+        String text = textField.getText();
+
+        System.out.println("PLAY: "+ text);
+        text = client.send("play "+ text);
+        textArea.append(text);
     }
   }
 
