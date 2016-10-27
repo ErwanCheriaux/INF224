@@ -100,6 +100,7 @@ public class Window extends JFrame{ // fenetre principale
 
         System.out.println("FIND: "+ text);
         text = client.send("find "+ text);
+        text = text.replace(';', '\n') + '\n';
         textArea.append(text);
     }
   }
