@@ -116,3 +116,17 @@ Ajout d'un menu. Utilisation des Actions qui remplace les listener.
 Etape terminée. 
 
 ##Etape3:
+Communication entre l'interface graphique (client) et le serveur.
+Un bouton Help à été ajouter pour aider l'utilisateur à se servir de l'interface et pour afficher le nom des objets multimédias et groupes déja existant dans la base de données.
+
+Etape terminée. 
+
+##Etape 4:
+Ajout d'un Makefile dans le repertoir swing permettant de compiler et de lancer l'interface graphique avec la commande 'make run'. 
+Penser à lancer le server, avec la commande 'make run' dans le repertoir cpp, avant de lancer l'interface graphique qui est un client.
+
+Etape terminé. 
+
+#########################################################
+#              		   FIN 		                #
+#########################################################

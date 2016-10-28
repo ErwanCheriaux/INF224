@@ -8,6 +8,15 @@ import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+ * La classe Window permet d'afficher une fenêtre via Swing
+ * Cette dernière représente l'intérface graphique permetant
+ * de communiquer avec un server.
+ * 
+ * @author Erwan CHERIAUX
+ * @version 1.0
+ * 
+ */
 public class Window extends JFrame{ // fenetre principale
 
   private static final long serialVersionUID = 1L;
@@ -96,6 +105,13 @@ public class Window extends JFrame{ // fenetre principale
   }
 
   //Classes imbriquées
+  
+  /**
+   * FindAction permet d'instancier des boutons qui serviront 
+   * à lancer une recherche dans la base de données pour ensuite
+   * afficher le résultat de la recherche dans la zone de texte
+   * de l'interface.
+   */
   private class FindAction extends AbstractAction {
     private FindAction() {
         super("Find");
@@ -111,6 +127,11 @@ public class Window extends JFrame{ // fenetre principale
     }
   }
 
+  
+  /**
+   * PlayAction permet d'instancier des boutons qui serviront 
+   * à jouer un objet multimédia se trouvant dans la base de données
+   */
   private class PlayAction extends AbstractAction {
     private PlayAction() {
         super("Play");
@@ -125,6 +146,11 @@ public class Window extends JFrame{ // fenetre principale
     }
   }
 
+  
+  /**
+   * ExitAction permet d'instancier des boutons qui serviront 
+   * à quitter l'application
+   */
   private class ExitAction extends AbstractAction {
     private ExitAction() {
         super("Exit");
@@ -136,6 +162,14 @@ public class Window extends JFrame{ // fenetre principale
     }
   }
 
+  
+  /**
+   * HelpAction permet d'instancier des boutons qui serviront 
+   * à afficher dans la zone de texte de l'interface graphique
+   * une aide d'utilisation de l'interface ainsi que la liste
+   * des objets multimédias et des groupes déjà existant dans 
+   * la base de données
+   */
   private class HelpAction extends AbstractAction {
     private HelpAction() {
         super("Help");
