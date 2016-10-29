@@ -35,6 +35,9 @@ class Image : public Multimedia
         virtual void setLatitude(double latitude){_latitude = latitude;}
         virtual void setLongitude(double longitude){_longitude = longitude;}
 
+        //sérialisation
+        const char* classname() const override {return "Image";}
+
         //methode
 
         /*!

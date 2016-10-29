@@ -31,6 +31,9 @@ class Video : public Multimedia
         //setter
         virtual void setTime(int time){_time = time;}
 
+        //sérialisation
+        const char* classname() const override {return "Video";}
+
         //methode
 
         /*!

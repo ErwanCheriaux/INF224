@@ -35,6 +35,9 @@ class Multimedia
         virtual void setName(string name){_name = name;}
         virtual void setPathname(string pathname){_pathname = pathname;}
 
+        //sérialisation
+        virtual const char* classname() const {return "Multimedia";}
+
         //methode abstraite
         virtual void play()=0;
 

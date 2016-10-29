@@ -36,6 +36,9 @@ class Film : public Video
         //setter
         virtual void setChapter(const int * chapter, int nbChapter);
 
+        //sérialisation
+        const char* classname() const override {return "Film";}
+
         //methode
         virtual void displayChapter(ostream& s) const;
 };
