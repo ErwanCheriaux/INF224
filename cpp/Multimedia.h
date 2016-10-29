@@ -4,6 +4,7 @@
 #include <string>
 #include <cstring>
 #include <iostream>
+#include <sstream>
 using namespace std;
 
 
@@ -37,6 +38,18 @@ class Multimedia
 
         //sérialisation
         virtual const char* classname() const {return "Multimedia";}
+
+        /*!
+         * \brief Permet d'écrire les objets sérialisé dans un fichier texte f
+         * \param f Fichier texte
+         */
+        virtual void write(ostream & f){f << _name << "\n" << _pathname << "\n";}
+
+        /*!
+         * \brief Permet de lire les objets sérialisé dans un fichier texte f
+         * \param f Fichier texte
+         */
+        virtual void read(istream & f){f >> _name >> _pathname;}
 
         //methode abstraite
         virtual void play()=0;

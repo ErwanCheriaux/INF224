@@ -34,6 +34,18 @@ class Video : public Multimedia
         //sérialisation
         const char* classname() const override {return "Video";}
 
+        void write(ostream & f) override
+        {
+            Multimedia::write(f);
+            f << _time << "\n";
+        }
+
+        void read(istream & f) override
+        {
+            Multimedia::read(f);
+            f >> _time;
+        }
+
         //methode
 
         /*!

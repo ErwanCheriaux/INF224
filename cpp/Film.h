@@ -39,6 +39,18 @@ class Film : public Video
         //sérialisation
         const char* classname() const override {return "Film";}
 
+        void write(ostream & f) override
+        {
+            Video::write(f);
+            f << *_chapter << "\n" << _nbChapter << "\n";
+        }
+
+        void read(istream & f) override
+        {
+            Video::read(f);
+            f >> *_chapter >> _nbChapter;
+        }
+
         //methode
         virtual void displayChapter(ostream& s) const;
 };

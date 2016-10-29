@@ -38,6 +38,18 @@ class Image : public Multimedia
         //sérialisation
         const char* classname() const override {return "Image";}
 
+        void write(ostream & f) override
+        {
+            Multimedia::write(f);
+            f << _latitude << "\n" << _longitude << "\n";
+        }
+
+        void read(istream & f) override
+        {
+            Multimedia::read(f);
+            f >> _latitude >> _longitude;
+        }
+
         //methode
 
         /*!
