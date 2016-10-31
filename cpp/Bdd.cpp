@@ -458,3 +458,53 @@ bool Bdd::processRequest(TCPConnection& cnx, const string& request, string& resp
     // renvoyer false si on veut clore la connexion avec le client
     return true;
 }
+
+
+/*!
+ * \brief save
+ * \param fileName
+ * \param objects
+ * \return
+ */
+bool Bdd::save(const string & fileName, const vector<Multimedia *> & objects)
+{
+    ostream f(fileName);
+    if (!f)
+    {
+        cerr << "Can't open file " << fileName << endl;
+        return false;
+    }
+    for (auto it : objects) it->write(f);
+    return true;
+}
+
+
+/*!
+ * \brief load
+ * \param fileName
+ * \param objects
+ * \return
+ */
+bool Bdd::load(const string & fileName, vector<Multimedia *> & objects)
+{
+    istream f(fileName);
+    if (!f)
+    {
+        cerr << "Can't open file " << fileName << endl;
+        return false;
+    }
+    while (f)
+    {
+        MultimediaPtr media;
+        media->read(f);
+        // pas d’erreur et pas en fin de fichier
+        if (f.fail())
+        {
+            // erreur de lecture
+            cerr << "Read error in " << fileName << endl;
+            return false;
+        }
+        else objects.push_back(media);
+    }
+    return true;
+}
