@@ -468,7 +468,7 @@ bool Bdd::processRequest(TCPConnection& cnx, const string& request, string& resp
  */
 bool Bdd::save(const string & fileName, const vector<Multimedia *> & objects)
 {
-    ostream f(fileName);
+    ofstream f(fileName);
     if (!f)
     {
         cerr << "Can't open file " << fileName << endl;
@@ -487,7 +487,7 @@ bool Bdd::save(const string & fileName, const vector<Multimedia *> & objects)
  */
 bool Bdd::load(const string & fileName, vector<Multimedia *> & objects)
 {
-    istream f(fileName);
+    ifstream f(fileName);
     if (!f)
     {
         cerr << "Can't open file " << fileName << endl;
