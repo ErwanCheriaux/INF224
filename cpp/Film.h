@@ -53,6 +53,13 @@ class Film : public Video
 
         //methode
         virtual void displayChapter(ostream& s) const;
+
+        //sérialisation
+        template<class Archive>
+        void serialize(Archive & archive)
+        {
+          archive(_chapter, _nbChapter);
+        }
 };
 
 #endif // FILM_H

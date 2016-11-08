@@ -5,6 +5,12 @@
 #include <cstring>
 #include <iostream>
 #include <sstream>
+
+//#include <cereal/types/unordered_map.hpp>
+//#include <cereal/types/memory.hpp>
+//#include <cereal/archives/binary.hpp>
+#include <fstream>
+
 using namespace std;
 
 
@@ -38,6 +44,13 @@ class Multimedia
 
         //sérialisation
         virtual const char* classname() const {return "Multimedia";}
+
+        // This method lets cereal know which data members to serialize
+        template<class Archive>
+        void serialize(Archive & archive)
+        {
+          archive(_name, _pathname); // serialize things by passing them to the archive
+        }
 
         /*!
          * \brief Permet d'écrire les objets sérialisé dans un fichier texte f

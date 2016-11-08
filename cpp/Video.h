@@ -59,6 +59,13 @@ class Video : public Multimedia
 
         virtual void display(ostream& s) const override
         {Multimedia::display(s); s << "time:" << getTime() << ";";}
+
+        //sérialisation
+        template<class Archive>
+        void serialize(Archive & archive)
+        {
+          archive(_time);
+        }
 };
 
 #endif // VIDEO_H
