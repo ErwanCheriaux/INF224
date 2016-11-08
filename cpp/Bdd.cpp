@@ -151,7 +151,7 @@ int Bdd::addMultimediaToGroup(const string multimediaName, const string groupNam
         gp.get()->push_back(mp); //ajout l'objet dans le groupe
         gp.get()->unique(); //permet de supprimer les doublons
         return 0;
-    }    
+    }
 }
 
 
@@ -459,13 +459,7 @@ bool Bdd::processRequest(TCPConnection& cnx, const string& request, string& resp
     return true;
 }
 
-
-/*!
- * \brief save
- * \param fileName
- * \param objects
- * \return
- */
+ /*
 bool Bdd::save(const string & fileName, const vector<Multimedia *> & objects)
 {
     ofstream f(fileName);
@@ -477,14 +471,10 @@ bool Bdd::save(const string & fileName, const vector<Multimedia *> & objects)
     for (auto it : objects) it->write(f);
     return true;
 }
+*/
 
 
-/*!
- * \brief load
- * \param fileName
- * \param objects
- * \return
- */
+ /*
 bool Bdd::load(const string & fileName, vector<Multimedia *> & objects)
 {
     ifstream f(fileName);
@@ -508,3 +498,4 @@ bool Bdd::load(const string & fileName, vector<Multimedia *> & objects)
     }
     return true;
 }
+*/
