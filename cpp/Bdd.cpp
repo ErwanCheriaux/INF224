@@ -466,6 +466,7 @@ bool Bdd::processRequest(TCPConnection& cnx, const string& request, string& resp
  * \param objects
  * \return
  */
+/*
 bool Bdd::save(const string & fileName, const vector<Multimedia *> & objects)
 {
     ofstream f(fileName);
@@ -477,6 +478,7 @@ bool Bdd::save(const string & fileName, const vector<Multimedia *> & objects)
     for (auto it : objects) it->write(f);
     return true;
 }
+*/
 
 
 /*!
@@ -485,6 +487,7 @@ bool Bdd::save(const string & fileName, const vector<Multimedia *> & objects)
  * \param objects
  * \return
  */
+/*
 bool Bdd::load(const string & fileName, vector<Multimedia *> & objects)
 {
     ifstream f(fileName);
@@ -508,3 +511,4 @@ bool Bdd::load(const string & fileName, vector<Multimedia *> & objects)
     }
     return true;
 }
+*/

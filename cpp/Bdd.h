@@ -14,6 +14,10 @@
 #include <sstream>
 #include <vector>
 
+//#include <boost/archive/text_oarchive.hpp>
+//#include <boost/archive/text_iarchive.hpp>
+//#include "boost/whatever.hpp"
+
 using namespace cppu;
 
 typedef shared_ptr<Multimedia> MultimediaPtr;
@@ -62,8 +66,8 @@ class Bdd
         virtual void initBdd();
         virtual bool processRequest(TCPConnection& cnx, const string& request, string& response);
 
-        virtual bool save(const string & fileName, const vector<Multimedia *> & objects);
-        virtual bool load(const string & fileName, vector<Multimedia *> & objects);
+        //virtual bool save(const string & fileName, const vector<Multimedia *> & objects);
+        //virtual bool load(const string & fileName, vector<Multimedia *> & objects);
 };
 
 #endif // BDD_H
