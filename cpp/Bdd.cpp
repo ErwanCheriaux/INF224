@@ -284,6 +284,22 @@ void Bdd::initBdd()
 
 
 /*!
+ * \brief Affiche tous les objets multimédia.
+ * \param s
+ */
+void Bdd::displayAll(ostream& s)
+{
+    MultimediaPtr media;
+
+    for (MultimediaMap::iterator it = multimediaMap.begin(); it != multimediaMap.end(); ++it)
+    {
+        media = multimediaMap[it->first];
+        media->display(s);
+    }
+}
+
+
+/*!
  * \brief Cette méthode est appelée chaque fois qu'il y a une requête à traiter.
  *        Ca doit etre une methode de la classe qui gere les données, afin qu'elle puisse y accéder.
  * \param cnx Permet d'activer ou non un verrou pour ne pas laisser plusieurs clients modifier la Bdd en même temps
@@ -491,7 +507,7 @@ bool Bdd::save(const string & fileName)
  * \param objects
  * \return
  */
-bool Bdd::load(const string & fileName, vector<Multimedia *> & objects)
+bool Bdd::load(const string & fileName)
 {
     ifstream f;
     f.open(fileName);

@@ -63,10 +63,11 @@ class Bdd
         virtual void play(const string name);
 
         virtual void initBdd();
+        virtual void displayAll(ostream& s);
         virtual bool processRequest(TCPConnection& cnx, const string& request, string& response);
 
         virtual bool save(const string & fileName);
-        virtual bool load(const string & fileName, vector<Multimedia *> & objects);
+        virtual bool load(const string & fileName);
 };
 
 #endif // BDD_H

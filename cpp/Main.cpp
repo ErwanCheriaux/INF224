@@ -17,9 +17,12 @@ const int PORT = 3331;
 int main(int argc, char* argv[])
 {
     Bdd * bdd = new Bdd();
-    bdd->initBdd();
 
-    bdd->save("save.txt");
+    bdd->initBdd();
+    //bdd->save("save.txt");
+
+    //bdd->load("save.txt");
+    bdd->displayAll(cout);
 }
 
 /*
