@@ -14,6 +14,9 @@
 #include <sstream>
 #include <vector>
 
+#include <iostream>
+#include <fstream>
+
 using namespace cppu;
 
 typedef shared_ptr<Multimedia> MultimediaPtr;

@@ -151,7 +151,7 @@ int Bdd::addMultimediaToGroup(const string multimediaName, const string groupNam
         gp.get()->push_back(mp); //ajout l'objet dans le groupe
         gp.get()->unique(); //permet de supprimer les doublons
         return 0;
-    }    
+    }
 }
 
 
@@ -468,7 +468,8 @@ bool Bdd::processRequest(TCPConnection& cnx, const string& request, string& resp
  */
 bool Bdd::save(const string & fileName, const vector<Multimedia *> & objects)
 {
-    ofstream f(fileName);
+    ofstream f;
+    f.open(fileName);
     if (!f)
     {
         cerr << "Can't open file " << fileName << endl;
@@ -487,7 +488,8 @@ bool Bdd::save(const string & fileName, const vector<Multimedia *> & objects)
  */
 bool Bdd::load(const string & fileName, vector<Multimedia *> & objects)
 {
-    ifstream f(fileName);
+    ifstream f;
+    f.open(fileName);
     if (!f)
     {
         cerr << "Can't open file " << fileName << endl;
@@ -504,7 +506,7 @@ bool Bdd::load(const string & fileName, vector<Multimedia *> & objects)
             cerr << "Read error in " << fileName << endl;
             return false;
         }
-        else objects.push_back(media);
+        //else objects.push_back(media);
     }
     return true;
 }
