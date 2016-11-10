@@ -17,7 +17,7 @@ const int PORT = 3331;
 int main(int argc, char* argv[])
 {
     Bdd * bdd = new Bdd();
-    //bdd->initBdd();
+    bdd->initBdd();
 
     bdd->save("save.txt");
 }

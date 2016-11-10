@@ -45,7 +45,7 @@ class Multimedia
          */
         virtual void write(ostream & f)
         {
-            f << _name << "\n" << _pathname << "\n";
+            f << classname() << "\n" << _name << "\n" << _pathname << "\n";
         }
 
         /*!

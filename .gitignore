@@ -1,5 +1,6 @@
 *.o
 *.class
+*.txt
 INF224*
 client
 server
