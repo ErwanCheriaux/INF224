@@ -470,7 +470,7 @@ bool Bdd::save(const string & fileName, const vector<Multimedia *> & objects)
 {
     ofstream f;
     f.open(fileName);
-    if (!f)
+    if (!f.is_open())
     {
         cerr << "Can't open file " << fileName << endl;
         return false;
@@ -490,7 +490,7 @@ bool Bdd::load(const string & fileName, vector<Multimedia *> & objects)
 {
     ifstream f;
     f.open(fileName);
-    if (!f)
+    if (!f.is_open())
     {
         cerr << "Can't open file " << fileName << endl;
         return false;
