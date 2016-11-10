@@ -63,13 +63,6 @@ class Image : public Multimedia
 
         virtual void display(ostream& s) const override
         {Multimedia::display(s); s << "latitude:" << getLatitude() << ";" << "longitude:" << getLongitude() << ";";}
-
-        //sérialisation
-        template<class Archive>
-        void serialize(Archive & archive)
-        {
-          archive(_latitude, _longitude);
-        }
 };
 
 #endif // IMAGE_H

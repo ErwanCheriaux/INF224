@@ -14,10 +14,6 @@
 #include <sstream>
 #include <vector>
 
-#include <cereal/archives/binary.hpp>
-#include <sstream>
-#include <fstream>
-
 using namespace cppu;
 
 typedef shared_ptr<Multimedia> MultimediaPtr;
@@ -66,34 +62,8 @@ class Bdd
         virtual void initBdd();
         virtual bool processRequest(TCPConnection& cnx, const string& request, string& response);
 
-        //virtual bool save(const string & fileName, const vector<Multimedia *> & objects);
-        //virtual bool load(const string & fileName, vector<Multimedia *> & objects);
-
-        /*!
-         * \brief save
-         * \param fileName
-         * \return
-         */
-        virtual save(const string & fileName)
-        {
-          stringstream ss; // any stream can be used
-          cereal::BinaryOutputArchive oarchive(ss); // Create an output archive
-          MultimediaPtr media = MultimediaPtr(new Image(image, mesImages/image.jpg, 15, 15));
-          oarchive(media); // Write the data to the archive
-        }
-
-        /*!
-         * \brief load
-         * \param fileName
-         * \return
-         */
-        virtual void load(const string & fileName)
-        {
-          stringstream ss; // any stream can be used
-          cereal::BinaryInputArchive iarchive(ss); // Create an input archive
-          MultimediaPtr media;
-          iarchive(media); // Read the data from the archive
-        }
+        virtual bool save(const string & fileName, const vector<Multimedia *> & objects);
+        virtual bool load(const string & fileName, vector<Multimedia *> & objects);
 };
 
 #endif // BDD_H
