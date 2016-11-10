@@ -65,7 +65,7 @@ class Bdd
         virtual void initBdd();
         virtual bool processRequest(TCPConnection& cnx, const string& request, string& response);
 
-        virtual bool save(const string & fileName, const vector<Multimedia *> & objects);
+        virtual bool save(const string & fileName);
         virtual bool load(const string & fileName, vector<Multimedia *> & objects);
 };
 

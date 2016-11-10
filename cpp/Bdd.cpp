@@ -466,16 +466,21 @@ bool Bdd::processRequest(TCPConnection& cnx, const string& request, string& resp
  * \param objects
  * \return
  */
-bool Bdd::save(const string & fileName, const vector<Multimedia *> & objects)
+bool Bdd::save(const string & fileName)
 {
     ofstream f;
+    MultimediaPtr media;
     f.open(fileName);
     if (!f.is_open())
     {
         cerr << "Can't open file " << fileName << endl;
         return false;
     }
-    for (auto it : objects) it->write(f);
+    for (MultimediaMap::iterator it = multimediaMap.begin(); it != multimediaMap.end(); ++it)
+    {
+        media = multimediaMap[it->first];
+        media->write(f);
+    }
     return true;
 }
 
