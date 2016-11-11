@@ -454,6 +454,24 @@ bool Bdd::processRequest(TCPConnection& cnx, const string& request, string& resp
         play(name);
         response = "Lecture de l'objet "+ name +" en cours";
     }
+    else if(requestString == "save") //sauvegarde dans un fichier les objets multimédia existant
+    {
+        TCPLock lock(cnx, false);
+        getline(requestStream, requestString, ' ');
+        string fileName = requestString;
+
+        save(fileName);
+        response = "sauvegarde des objets multimédia dans "+ fileName +" terminée";
+    }
+    else if(requestString == "load") //Charge un fichier de sauvegarde d'un objet multimédia
+    {
+        TCPLock lock(cnx, true);
+        getline(requestStream, requestString, ' ');
+        string fileName = requestString;
+
+        load(fileName);
+        response = "Lecture de la sauvegarde "+ fileName +" terminée";
+    }
     else //Instruction inexistante
     {
         TCPLock lock(cnx, false);
