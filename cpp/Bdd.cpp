@@ -151,7 +151,7 @@ int Bdd::addMultimediaToGroup(const string multimediaName, const string groupNam
         gp.get()->push_back(mp); //ajout l'objet dans le groupe
         gp.get()->unique(); //permet de supprimer les doublons
         return 0;
-    }    
+    }
 }
 
 
@@ -280,6 +280,22 @@ void Bdd::initBdd()
     addMultimediaToGroup("video2", "mesDocuments");
     addMultimediaToGroup("video_best_of", "mesDocuments");
     addMultimediaToGroup("Logo_ENST", "mesDocuments");
+}
+
+
+/*!
+ * \brief Affiche tous les objets multimédia.
+ * \param s
+ */
+void Bdd::displayAll(ostream& s)
+{
+    MultimediaPtr media;
+
+    for (MultimediaMap::iterator it = multimediaMap.begin(); it != multimediaMap.end(); ++it)
+    {
+        media = multimediaMap[it->first];
+        media->display(s);
+    }
 }
 
 
@@ -438,6 +454,24 @@ bool Bdd::processRequest(TCPConnection& cnx, const string& request, string& resp
         play(name);
         response = "Lecture de l'objet "+ name +" en cours";
     }
+    else if(requestString == "save") //sauvegarde dans un fichier les objets multimédia existant
+    {
+        TCPLock lock(cnx, false);
+        getline(requestStream, requestString, ' ');
+        string fileName = requestString;
+
+        save(fileName);
+        response = "sauvegarde des objets multimédia dans "+ fileName +" terminée";
+    }
+    else if(requestString == "load") //Charge un fichier de sauvegarde d'un objet multimédia
+    {
+        TCPLock lock(cnx, true);
+        getline(requestStream, requestString, ' ');
+        string fileName = requestString;
+
+        load(fileName);
+        response = "Lecture de la sauvegarde "+ fileName +" terminée";
+    }
     else //Instruction inexistante
     {
         TCPLock lock(cnx, false);
@@ -466,15 +500,21 @@ bool Bdd::processRequest(TCPConnection& cnx, const string& request, string& resp
  * \param objects
  * \return
  */
-bool Bdd::save(const string & fileName, const vector<Multimedia *> & objects)
+bool Bdd::save(const string & fileName)
 {
-    ostream f(fileName);
-    if (!f)
+    ofstream f;
+    MultimediaPtr media;
+    f.open(fileName);
+    if (!f.is_open())
     {
         cerr << "Can't open file " << fileName << endl;
         return false;
     }
-    for (auto it : objects) it->write(f);
+    for (MultimediaMap::iterator it = multimediaMap.begin(); it != multimediaMap.end(); ++it)
+    {
+        media = multimediaMap[it->first];
+        media->write(f);
+    }
     return true;
 }
 
@@ -485,18 +525,21 @@ bool Bdd::save(const string & fileName, const vector<Multimedia *> & objects)
  * \param objects
  * \return
  */
-bool Bdd::load(const string & fileName, vector<Multimedia *> & objects)
+bool Bdd::load(const string & fileName)
 {
-    istream f(fileName);
-    if (!f)
+    ifstream f;
+    string classename;
+    Image * image = new Image();
+    Video * video = new Video();
+
+    f.open(fileName);
+    if (!f.is_open())
     {
         cerr << "Can't open file " << fileName << endl;
         return false;
     }
     while (f)
     {
-        MultimediaPtr media;
-        media->read(f);
         // pas d’erreur et pas en fin de fichier
         if (f.fail())
         {
@@ -504,7 +547,25 @@ bool Bdd::load(const string & fileName, vector<Multimedia *> & objects)
             cerr << "Read error in " << fileName << endl;
             return false;
         }
-        else objects.push_back(media);
+        else
+        {
+            getline(f, classename);
+
+            if(classename == "Image")
+            {
+                image->read(f);
+                add(image->getName(), image->getPathname(), image->getLatitude(), image->getLongitude());
+            }
+            else if(classename == "Video")
+            {
+                video->read(f);
+                add(video->getName(), video->getPathname(), video->getTime());
+            }
+        }
     }
+
+    delete image;
+    delete video;
+
     return true;
 }

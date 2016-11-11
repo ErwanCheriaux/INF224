@@ -14,6 +14,9 @@
 #include <sstream>
 #include <vector>
 
+#include <iostream>
+#include <fstream>
+
 using namespace cppu;
 
 typedef shared_ptr<Multimedia> MultimediaPtr;
@@ -35,7 +38,7 @@ class Bdd
 
     public:
         //constructeur
-        Bdd(){cout << "=== BDD créé ===\n" << endl; initBdd();}
+        Bdd(){cout << "=== BDD créé ===\n" << endl;}
 
         //destructeur
         virtual ~Bdd(){cout << "---> Destruction de la BDD\n" << endl;}
@@ -60,10 +63,11 @@ class Bdd
         virtual void play(const string name);
 
         virtual void initBdd();
+        virtual void displayAll(ostream& s);
         virtual bool processRequest(TCPConnection& cnx, const string& request, string& response);
 
-        virtual bool save(const string & fileName, const vector<Multimedia *> & objects);
-        virtual bool load(const string & fileName, vector<Multimedia *> & objects);
+        virtual bool save(const string & fileName);
+        virtual bool load(const string & fileName);
 };
 
 #endif // BDD_H

@@ -100,6 +100,11 @@ R:La solution la plus simple serait de faire apartenir cette méthode à la clas
 
 Etape terminée. 
 
+##Etape 12:
+Sérialisation de la liste d'objet multimédia. 
+Après plusieurs tentative d'utiliser les bibliothèque Cereal et Boost. j'en arrive toujours avec la même erreur qui me dit que le compilateur ne trouve pas les headers alors que les répertoires des headers de cereal et boost sont bien présent à la racine du projet.
+J'en viens donc à sérialiser les objets multimédias à la main avec ifstream et ofstream.
+
 #Partie Swing
 
 ##Etape 1:

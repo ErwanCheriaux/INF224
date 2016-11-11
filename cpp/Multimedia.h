@@ -45,7 +45,7 @@ class Multimedia
          */
         virtual void write(ostream & f)
         {
-            f << _name << "\n" << _pathname << "\n";
+            f << classname() << "\n" << _name << "\n" << _pathname << "\n";
         }
 
         /*!
@@ -55,16 +55,7 @@ class Multimedia
         virtual void read(istream & f)
         {
             getline(f, _name);
-            string name;
-            getline(f, name);
-            _name = stoi(name);
-
             getline(f, _pathname);
-            string pathname;
-            getline(f, pathname);
-            _pathname = stoi(pathname);
-
-            //f >> _name >> _pathname;
         }
 
         //methode abstraite
