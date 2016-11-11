@@ -510,6 +510,10 @@ bool Bdd::save(const string & fileName)
 bool Bdd::load(const string & fileName)
 {
     ifstream f;
+    string classename;
+    Image * image = new Image();
+    Video * video = new Video();
+
     f.open(fileName);
     if (!f.is_open())
     {
@@ -518,8 +522,6 @@ bool Bdd::load(const string & fileName)
     }
     while (f)
     {
-        MultimediaPtr media;
-        media->read(f);
         // pas d’erreur et pas en fin de fichier
         if (f.fail())
         {
@@ -527,7 +529,25 @@ bool Bdd::load(const string & fileName)
             cerr << "Read error in " << fileName << endl;
             return false;
         }
-        //else objects.push_back(media);
+        else
+        {
+            getline(f, classename);
+
+            if(classename == "Image")
+            {
+                image->read(f);
+                add(image->getName(), image->getPathname(), image->getLatitude(), image->getLongitude());
+            }
+            else if(classename == "Video")
+            {
+                video->read(f);
+                add(video->getName(), video->getPathname(), video->getTime());
+            }
+        }
     }
+
+    delete image;
+    delete video;
+
     return true;
 }

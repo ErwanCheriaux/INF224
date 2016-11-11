@@ -43,7 +43,9 @@ class Video : public Multimedia
         void read(istream & f) override
         {
             Multimedia::read(f);
-            f >> _time;
+            string time;
+            getline(f, time);
+            _time = stoi(time);
         }
 
         //methode

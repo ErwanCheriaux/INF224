@@ -47,7 +47,13 @@ class Image : public Multimedia
         void read(istream & f) override
         {
             Multimedia::read(f);
-            f >> _latitude >> _longitude;
+            string latitude, longitude;
+
+            getline(f, latitude);
+            getline(f, longitude);
+
+            _latitude  = stod(latitude);
+            _longitude = stod(longitude);
         }
 
         //methode
