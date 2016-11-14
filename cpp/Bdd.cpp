@@ -515,6 +515,8 @@ bool Bdd::save(const string & fileName)
         media = multimediaMap[it->first];
         media->write(f);
     }
+
+    f.close();
     return true;
 }
 
@@ -563,6 +565,11 @@ bool Bdd::load(const string & fileName)
             }
         }
     }
+
+    f.close();
+
+    image->setName("image aux");
+    video->setName("video aux");
 
     delete image;
     delete video;
