@@ -4,10 +4,10 @@
  * \file main.c
  * \brief Programme de tests.
  * \author Erwan CHERIAUX
- * \version 0.3
- * \date 24 octobre 2016
+ * \version 1.3
+ * \date 15 novembre 2016
  *
- * Serveur du logiciel d'une set-top box multimédia
+ * Serveur d'un set-top box multimédia
  *
  */
 

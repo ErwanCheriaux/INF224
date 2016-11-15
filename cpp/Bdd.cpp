@@ -11,22 +11,25 @@
  */
 MultimediaPtr Bdd::add(string name, string pathname, double latitude, double longitude)
 {
-    MultimediaMap::iterator it;
+    MultimediaMap::iterator it = multimediaMap.find(name);
 
     //Vérification que l'objet multimédia n'existe pas déjà dans la Bdd
-    it = multimediaMap.find(name);
     if(it != multimediaMap.end())
     {
-        cerr << "---> Erreur : L'objet "+ name +" existe déjà dans la Bdd" << endl;
+        cerr << "---> Erreur : Un objet du même nom existe déjà dans la Bdd" << endl;
         return nullptr;
     }
-    else
+    //Vérifiaction que la taille de l'image est cohérente
+    if(latitude <= 0 || longitude <= 0)
     {
-        cout << "--- Ajout de l'objet "+ name +" à la Bdd" << endl;
-        MultimediaPtr media = MultimediaPtr(new Image(name, pathname, latitude, longitude));
-        multimediaMap[name] = media;
-        return media;
+        cerr << "---> Erreur : L'image "+ name +" à une taille négatif" << endl;
+        return nullptr;
     }
+
+    cout << "--- Ajout de l'image "+ name +" à la Bdd" << endl;
+    MultimediaPtr media = MultimediaPtr(new Image(name, pathname, latitude, longitude));
+    multimediaMap[name] = media;
+    return media;
 }
 
 
@@ -39,22 +42,25 @@ MultimediaPtr Bdd::add(string name, string pathname, double latitude, double lon
  */
 MultimediaPtr Bdd::add(string name, string pathname, int time)
 {
-    MultimediaMap::iterator it;
+    MultimediaMap::iterator it = multimediaMap.find(name);
 
     //Vérification que l'objet multimédia n'existe pas déjà dans la Bdd
-    it = multimediaMap.find(name);
     if(it != multimediaMap.end())
     {
-        cerr << "---> Erreur : L'objet "+ name +" existe déjà dans la Bdd" << endl;
+        cerr << "---> Erreur : Un objet du même nom existe déjà dans la Bdd" << endl;
         return nullptr;
     }
-    else
+    //Vérifiaction que le temps est positif
+    if(time <= 0)
     {
-        cout << "--- Ajout de l'objet "+ name +" à la Bdd" << endl;
-        MultimediaPtr media = MultimediaPtr(new Video(name, pathname, time));
-        multimediaMap[name] = media;
-        return media;
+        cerr << "---> Erreur : La video "+ name +" à un temps négatif" << endl;
+        return nullptr;
     }
+
+    cout << "--- Ajout de la video "+ name +" à la Bdd" << endl;
+    MultimediaPtr media = MultimediaPtr(new Video(name, pathname, time));
+    multimediaMap[name] = media;
+    return media;
 }
 
 
@@ -69,22 +75,31 @@ MultimediaPtr Bdd::add(string name, string pathname, int time)
  */
 MultimediaPtr Bdd::add(string name, string pathname, int time, const int *chapter, int nbChapter)
 {
-    MultimediaMap::iterator it;
+    MultimediaMap::iterator it = multimediaMap.find(name);
 
     //Vérification que l'objet multimédia n'existe pas déjà dans la Bdd
-    it = multimediaMap.find(name);
     if(it != multimediaMap.end())
     {
-        cerr << "---> Erreur : L'objet "+ name +" existe déjà dans la Bdd" << endl;
+        cerr << "---> Erreur : Un objet du même nom existe déjà dans la Bdd" << endl;
         return nullptr;
     }
-    else
+    //Vérifiaction que le temps est positif
+    if(time <= 0)
     {
-        cout << "--- Ajout de l'objet "+ name +" à la Bdd" << endl;
-        MultimediaPtr media = MultimediaPtr(new Film(name, pathname, time, chapter, nbChapter));
-        multimediaMap[name] = media;
-        return media;
+        cerr << "---> Erreur : Le film "+ name +" à un temps négatif" << endl;
+        return nullptr;
     }
+    //Vérifiaction que le nombre de chapitre est positif
+    if(nbChapter <= 0)
+    {
+        cerr << "---> Erreur : Le film "+ name +" à un nombre de chapitre négatif" << endl;
+        return nullptr;
+    }
+
+    cout << "--- Ajout du film "+ name +" à la Bdd" << endl;
+    MultimediaPtr media = MultimediaPtr(new Film(name, pathname, time, chapter, nbChapter));
+    multimediaMap[name] = media;
+    return media;
 }
 
 
@@ -95,22 +110,19 @@ MultimediaPtr Bdd::add(string name, string pathname, int time, const int *chapte
  */
 GroupPtr Bdd::add(string name)
 {
-    GroupMap::iterator it;
+    GroupMap::iterator it = groupMap.find(name);
 
     //Vérification que le groupe n'existe pas déjà dans la Bdd
-    it = groupMap.find(name);
     if(it != groupMap.end())
     {
-        cerr << "---> Erreur : Le groupe "+ name +" existe déjà dans la Bdd" << endl;
+        cerr << "---> Erreur : Un groupe du même nom existe déjà dans la Bdd" << endl;
         return nullptr;
     }
-    else
-    {
-        cout << "--- Ajout du groupe "+ name +" à la Bdd" << endl;
-        GroupPtr group = GroupPtr(new Group(name));
-        groupMap[name] = group;
-        return group;
-    }
+
+    cout << "--- Ajout du groupe "+ name +" à la Bdd" << endl;
+    GroupPtr group = GroupPtr(new Group(name));
+    groupMap[name] = group;
+    return group;
 }
 
 
@@ -122,36 +134,31 @@ GroupPtr Bdd::add(string name)
  */
 int Bdd::addMultimediaToGroup(const string multimediaName, const string groupName)
 {
-    MultimediaMap::iterator multimediaIt;
-    GroupMap::iterator groupIt;
-
-    multimediaIt = multimediaMap.find(multimediaName);
-    groupIt = groupMap.find(groupName);
+    MultimediaMap::iterator multimediaIt = multimediaMap.find(multimediaName);
+    GroupMap::iterator groupIt = groupMap.find(groupName);
 
     //Vérification que l'objet et le groupe existe bien dans la Bdd
     if(multimediaIt == multimediaMap.end())
     {
-        cerr << "---> Erreur : "+ multimediaName +" n'existe pas dans la Bdd" << endl;
+        cerr << "---> Erreur : L'objet "+ multimediaName +" n'existe pas dans la Bdd" << endl;
         return 1;
     }
     else if(groupIt == groupMap.end())
     {
-        cerr << "---> Erreur : "+ groupName +" n'existe pas dans la Bdd" << endl;
+        cerr << "---> Erreur : Le groupe "+ groupName +" n'existe pas dans la Bdd" << endl;
         return 2;
     }
-    else
-    {
-        cout << "--- l'objet multimédia "+ multimediaName +" est maintenant associé au groupe "+ groupName << endl;
-        MultimediaPtr mp;
-        GroupPtr gp;
 
-        mp = multimediaMap[multimediaName];
-        gp = groupMap[groupName];
+    cout << "--- L'objet "+ multimediaName +" est maintenant associé au groupe "+ groupName << endl;
+    MultimediaPtr mp;
+    GroupPtr gp;
 
-        gp.get()->push_back(mp); //ajout l'objet dans le groupe
-        gp.get()->unique(); //permet de supprimer les doublons
-        return 0;
-    }
+    mp = multimediaMap[multimediaName];
+    gp = groupMap[groupName];
+
+    gp.get()->push_back(mp); //ajout l'objet dans le groupe
+    gp.get()->unique(); //permet de supprimer les doublons
+    return 0;
 }
 
 
@@ -161,11 +168,8 @@ int Bdd::addMultimediaToGroup(const string multimediaName, const string groupNam
  */
 int Bdd::remove(const string name)
 {
-    MultimediaMap::iterator multimediaIt;
-    GroupMap::iterator groupIt;
-
-    multimediaIt = multimediaMap.find(name);
-    groupIt = groupMap.find(name);
+    MultimediaMap::iterator multimediaIt = multimediaMap.find(multimediaName);
+    GroupMap::iterator groupIt = groupMap.find(groupName);
 
     //Vérification que l'objet ou le groupe existe bien dans la Bdd
     if(multimediaIt == multimediaMap.end() && groupIt == groupMap.end())
@@ -173,7 +177,7 @@ int Bdd::remove(const string name)
         cerr << "---> Erreur : "+ name +" n'existe pas dans la Bdd" << endl;
         return 0;
     }
-    else if(multimediaIt != multimediaMap.end())
+    else if(multimediaIt != multimediaMap.end()) //suppression d'un objet multimédia
     {
         cout << "--- Suppression de l'objet "+ name +" de la Bdd" << endl;
 
@@ -190,7 +194,7 @@ int Bdd::remove(const string name)
         multimediaMap.erase(name);
         return 1;
     }
-    else
+    else //suppression d'un groupe
     {
         cout << "--- Suppression du groupe "+ name +" de la Bdd" << endl;
         groupMap.erase(name);
@@ -205,11 +209,8 @@ int Bdd::remove(const string name)
  */
 void Bdd::find(ostream& s, const string name)
 {
-    MultimediaMap::iterator multimediaIt;
-    GroupMap::iterator groupIt;
-
-    multimediaIt = multimediaMap.find(name);
-    groupIt = groupMap.find(name);
+    MultimediaMap::iterator multimediaIt = multimediaMap.find(multimediaName);
+    GroupMap::iterator groupIt = groupMap.find(groupName);
 
     //Vérification que l'objet et/ou le groupe existe bien dans la Bdd
     if(multimediaIt == multimediaMap.end() && groupIt == groupMap.end())
@@ -270,7 +271,7 @@ void Bdd::initBdd()
     add("video1", "dossierPerso/film/video1.avi", 10);
     add("video2", "dossierPerso/film/video2.avi", 15);
     add("video_best_of", "dossierPerso/film/video_best_of.avi", 5);
-    add("Logo_ENST", "./image/Logo_Télécom_ParisTech.png", 640, 480);
+    add("Logo", "image/Logo_Télécom_ParisTech.png", 640, 480);
 
     addMultimediaToGroup("video1", "mesVideos");
     addMultimediaToGroup("video2", "mesVideos");
@@ -327,7 +328,7 @@ bool Bdd::processRequest(TCPConnection& cnx, const string& request, string& resp
     {
         TCPLock lock(cnx, false);
         stringstream responseStream;
-        responseStream << "--- Help;- init;- addImage;- addVideo;- addFilm;- addTo;- remove;- find;- play;";
+        responseStream << "--- Help;- init;- addImage;- addVideo;- addTo;- remove;- find;- play;- save;- load;- display;";
         getline(responseStream, response);
     }
     else if(requestString == "init") //Initialise la Bdd avec des objets multimédias et des groupes
@@ -351,9 +352,9 @@ bool Bdd::processRequest(TCPConnection& cnx, const string& request, string& resp
         requestStream >> longitude;
 
         if(add(name, pathname, latitude, longitude) != nullptr)
-            response = "--- Ajout de l'objet "+ name +" à la Bdd";
+            response = "--- Ajout de l'image "+ name +" à la Bdd";
         else
-            response = "---> Erreur : L'objet "+ name +" existe déjà dans la Bdd";
+            response = "---> Erreur : un objet du même nom existe déjà dans la Bdd";
     }
     else if(requestString == "addVideo") //Ajout d'une vidéo dans la Bdd
     {
@@ -368,30 +369,9 @@ bool Bdd::processRequest(TCPConnection& cnx, const string& request, string& resp
         requestStream >> time;
 
         if(add(name, pathname, time) != nullptr)
-            response = "--- Ajout de l'objet "+ name +" à la Bdd";
+            response = "--- Ajout de la video "+ name +" à la Bdd";
         else
-            response = "---> Erreur : L'objet "+ name +" existe déjà dans la Bdd";
-    }
-    else if(requestString == "addFilm") //Ajout d'un film dans la Bdd
-    {
-        TCPLock lock(cnx, true);
-        getline(requestStream, requestString, ' ');
-        string name = requestString;
-        getline(requestStream, requestString, ' ');
-        string pathname = requestString;
-
-        int time;
-        int *chapter = nullptr;
-        int nbChapter;
-
-        requestStream >> time;
-        //requestStream >> chapter;
-        requestStream >> nbChapter;
-
-        if(add(name, pathname, time, chapter, nbChapter) != nullptr)
-            response = "--- Ajout de l'objet "+ name +" à la Bdd";
-        else
-            response = "---> Erreur : L'objet "+ name +" existe déjà dans la Bdd";
+            response = "---> Erreur : un objet du même nom existe déjà dans la Bdd";
     }
     else if(requestString == "addGroup") //Ajout d'un groupe dans la Bdd
     {
@@ -402,7 +382,7 @@ bool Bdd::processRequest(TCPConnection& cnx, const string& request, string& resp
         if(add(name) != nullptr)
             response = "--- Ajout du groupe "+ name +" à la Bdd";
         else
-            response = "---> Erreur : Le groupe "+ name +" existe déjà dans la Bdd";
+            response = "---> Erreur : un groupe du même nom existe déjà dans la Bdd";
     }
     else if(requestString == "addTo") //Association d'un objet multimédia avec un groupe
     {
@@ -414,11 +394,11 @@ bool Bdd::processRequest(TCPConnection& cnx, const string& request, string& resp
 
         int res = addMultimediaToGroup(multimediaName, groupName);
         if(res == 0)
-            response = "--- L'objet multimédia "+ multimediaName +" est maintenant associé au groupe "+ groupName;
+            response = "--- L'objet "+ multimediaName +" est maintenant associé au groupe "+ groupName;
         else if(res == 1)
-            response = "---> Erreur : "+ multimediaName +" n'existe pas dans la Bdd";
+            response = "---> Erreur : l'objet "+ multimediaName +" n'existe pas dans la Bdd";
         else if(res == 2)
-            response = "---> Erreur : "+ groupName +" n'existe pas dans la Bdd";
+            response = "---> Erreur : le groupe "+ groupName +" n'existe pas dans la Bdd";
     }
     else if(requestString == "remove") //Suppression d'un objet multimédia ou d'un groupe
     {

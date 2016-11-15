@@ -19,6 +19,7 @@ Group::Group(string name)
     _name = name;
 }
 
+
 /*!
  * \brief Affiche dans la console les informations de tous les produits de la liste
  * \param s choix de la sortie pour l'affichage (cout -> terminal)

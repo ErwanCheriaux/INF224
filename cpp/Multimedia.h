@@ -9,7 +9,7 @@ using namespace std;
 
 
 /*!
- * \brief La classe Multimedia est la classe de base de tout objet multimédia (vidéo, image, ...)
+ * \brief La classe Multimédia est la classe de base de tout objet multimédia (vidéo, image, ...)
  */
 class Multimedia
 {
@@ -36,30 +36,13 @@ class Multimedia
         virtual void setName(string name){_name = name;}
         virtual void setPathname(string pathname){_pathname = pathname;}
 
-        //sérialisation
-        virtual const char* classname() const {return "Multimedia";}
-
-        /*!
-         * \brief Permet d'écrire les objets sérialisé dans un fichier texte f
-         * \param f Fichier texte
-         */
-        virtual void write(ostream & f)
-        {
-            f << classname() << "\n" << _name << "\n" << _pathname << "\n";
-        }
-
-        /*!
-         * \brief Permet de lire les objets sérialisé dans un fichier texte f
-         * \param f Fichier texte
-         */
-        virtual void read(istream & f)
-        {
-            getline(f, _name);
-            getline(f, _pathname);
-        }
-
         //methode abstraite
         virtual void play()=0;
+
+        //sérialisation
+        virtual const char* classname() const {return "Multimedia";}
+        virtual void write(ostream & f);
+        virtual void read(istream & f);
 
         //methode
         virtual void display(ostream& s) const;

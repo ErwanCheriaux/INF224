@@ -16,6 +16,7 @@
 
 #include <iostream>
 #include <fstream>
+#include <exception>
 
 using namespace cppu;
 
@@ -38,7 +39,7 @@ class Bdd
 
     public:
         //constructeur
-        Bdd(){cout << "=== BDD créé ===\n" << endl;}
+        Bdd(){cout << "---> Création de la BDD\n" << endl;}
 
         //destructeur
         virtual ~Bdd(){cout << "---> Destruction de la BDD\n" << endl;}
@@ -66,6 +67,7 @@ class Bdd
         virtual void displayAll(ostream& s);
         virtual bool processRequest(TCPConnection& cnx, const string& request, string& response);
 
+        //sérialisation
         virtual bool save(const string & fileName);
         virtual bool load(const string & fileName);
 };

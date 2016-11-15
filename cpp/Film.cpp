@@ -3,11 +3,11 @@
 
 /*!
  * \brief Constructeur de la classe Film héritant de Vidéo et Multumédia
- *        Permet de jouer un film possèdant plusieur chapitre
+ *        Permets de jouer un film possédant plusieurs chapitres
  * \param name Nom de la vidéo
  * \param pathname Chemin relatif de la vidéo
- * \param time Durée de la vidéo en minute
- * \param chapter Tableau contenant le temps où commence chaques chapitres
+ * \param time Durée de la vidéo en minutes
+ * \param chapter Tableau contenant le temps où commence chaque chapitre
  * \param nbChapter Nombre de chapitre dans le film
  */
 Film::Film(string name, string pathname, int time, const int *chapter, int nbChapter):
@@ -41,7 +41,7 @@ Film& Film::operator=(const Film& f)
 
 
 /*!
- * \brief Renvoie une copie du tableau chapter avec son nombre d'élément nbChapter
+ * \brief Renvoie une copie du tableau chapter avec son nombre d'éléments nbChapter
  * \param nbChapter Nombre d'élément dans le tableau qui sera retourné
  * \return chapter Tableau contenant le temps de début de chaque chapitre
  */
@@ -58,9 +58,9 @@ int * Film::getChapter(int &nbChapter) const
 
 
 /*!
- * \brief Permet de changer le tableau chapter et son nombre d'élément nbChapter
+ * \brief Permet de modifier le tableau chapter et son nombre d'élément nbChapter
  * \param chapter Tableau contenant le temps de début de chaque chapitre
- * \param nbChapter Nombre d'élément dans le tableau qui sera retourné
+ * \param nbChapter Nombre d'éléments dans le tableau qui sera retourné
  */
 void Film::setChapter(const int *chapter, int nbChapter)
 {
