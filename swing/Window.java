@@ -182,7 +182,7 @@ public class Window extends JFrame{ // fenetre principale
         textArea.append("le fichier (ou le groupe) que vous souhaitez rechercher ou jouer\n");
         textArea.append("----------------------------------------------------------------------------");
         textArea.append("----------------------------------------------------------------------------\n");
-        textArea.append("Listes des fichiers existant dans la Base de données:\tvideo1, video2, video_best_of, Logo_ENST\n");
+        textArea.append("Listes des fichiers existant dans la Base de données:\tvideo1, video2, video_best_of, Logo\n");
         textArea.append("Listes des groupes existant dans la Base de données:\tmesVideos, mesDocuments\n\n");
     }
   }

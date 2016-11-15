@@ -168,8 +168,8 @@ int Bdd::addMultimediaToGroup(const string multimediaName, const string groupNam
  */
 int Bdd::remove(const string name)
 {
-    MultimediaMap::iterator multimediaIt = multimediaMap.find(multimediaName);
-    GroupMap::iterator groupIt = groupMap.find(groupName);
+    MultimediaMap::iterator multimediaIt = multimediaMap.find(name);
+    GroupMap::iterator groupIt = groupMap.find(name);
 
     //Vérification que l'objet ou le groupe existe bien dans la Bdd
     if(multimediaIt == multimediaMap.end() && groupIt == groupMap.end())
@@ -209,8 +209,8 @@ int Bdd::remove(const string name)
  */
 void Bdd::find(ostream& s, const string name)
 {
-    MultimediaMap::iterator multimediaIt = multimediaMap.find(multimediaName);
-    GroupMap::iterator groupIt = groupMap.find(groupName);
+    MultimediaMap::iterator multimediaIt = multimediaMap.find(name);
+    GroupMap::iterator groupIt = groupMap.find(name);
 
     //Vérification que l'objet et/ou le groupe existe bien dans la Bdd
     if(multimediaIt == multimediaMap.end() && groupIt == groupMap.end())
@@ -396,9 +396,9 @@ bool Bdd::processRequest(TCPConnection& cnx, const string& request, string& resp
         if(res == 0)
             response = "--- L'objet "+ multimediaName +" est maintenant associé au groupe "+ groupName;
         else if(res == 1)
-            response = "---> Erreur : l'objet "+ multimediaName +" n'existe pas dans la Bdd";
+            response = "---> Erreur : L'objet "+ multimediaName +" n'existe pas dans la Bdd";
         else if(res == 2)
-            response = "---> Erreur : le groupe "+ groupName +" n'existe pas dans la Bdd";
+            response = "---> Erreur : Le groupe "+ groupName +" n'existe pas dans la Bdd";
     }
     else if(requestString == "remove") //Suppression d'un objet multimédia ou d'un groupe
     {

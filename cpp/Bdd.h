@@ -39,7 +39,7 @@ class Bdd
 
     public:
         //constructeur
-        Bdd(){cout << "---> Création de la BDD\n" << endl;}
+        Bdd(){cout << "---> Création de la BDD\n" << endl; initBdd(); /* l'initalisation n'est pas indispensable */}
 
         //destructeur
         virtual ~Bdd(){cout << "---> Destruction de la BDD\n" << endl;}
